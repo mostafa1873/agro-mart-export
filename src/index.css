@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  --color-agri-green: #2d5a27;
+  --color-agri-orange: #f28c33;
+}
+

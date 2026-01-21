@@ -17,17 +17,17 @@ export default function Footer() {
 
     const navItems = [
         { name: t('footer.links.0'), path: '/' },
-        { name: t('footer.links.1'), path: '/aboutus' },
-        { name: t('footer.links.2'), path: '/ourproducts' },
+        { name: t('footer.links.1'), path: '/about' },
+        { name: t('footer.links.2'), path: '/products' },
         { name: t('footer.links.3'), path: '/contact' },
     ];
 
     return (
-        
+
         <footer className="bg-gray-50 pt-16 pb-8 border-t border-gray-100" dir={isRtl ? 'rtl' : 'ltr'}>
+
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-                {/* 1. Centered Logo Section */}
                 <div className="flex flex-col items-center mb-16 text-center">
                     <img
                         src={LogoMain}
@@ -39,10 +39,8 @@ export default function Footer() {
                     </p>
                 </div>
 
-                {/* 2. Main Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 border-y border-gray-200/60 py-12">
 
-                    {/* Quick Links */}
                     <div className="flex flex-col items-center lg:items-start">
                         <h4 className="text-gray-900 font-black mb-6 text-sm uppercase tracking-widest">{t('footer.quick_links')}</h4>
                         <ul className="space-y-4 text-center lg:text-start">
@@ -60,13 +58,24 @@ export default function Footer() {
                     <div className="flex flex-col items-center lg:items-start">
                         <h4 className="text-gray-900 font-black mb-6 text-sm uppercase tracking-widest">{t('footer.key_exports')}</h4>
                         <ul className="space-y-4 text-gray-500 font-bold text-sm text-center lg:text-start">
-                            {(t('footer.exports', { returnObjects: true }) as string[]).map(product => (
-                                <li key={product} className="hover:text-agri-green cursor-pointer transition-colors">{product}</li>
-                            ))}
+                            {(t('footer.exports', { returnObjects: true }) as string[]).map((product, index) => {
+                                const tags = ['iqf', 'fresh', 'in_brine', 'all'];
+                                const filterTag = tags[index] || 'all';
+
+                                return (
+                                    <li key={product}>
+                                        <NavLink
+                                            to={`/products?filter=${filterTag}`}
+                                            className="hover:text-agri-green cursor-pointer transition-colors block"
+                                        >
+                                            {product}
+                                        </NavLink>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
 
-                    {/* New Contact Section (Clean Look) */}
                     <div className="flex flex-col items-center lg:items-start">
                         <h4 className="text-gray-900 font-black mb-6 text-sm uppercase tracking-widest">{t('footer.contact_us')}</h4>
                         <div className="space-y-5">
@@ -85,9 +94,8 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Social Media */}
                     <div className="flex flex-col items-center lg:items-start">
-                        <h4 className="text-gray-900 font-black mb-6 text-sm uppercase tracking-widest">Follow Us</h4>
+                        <h4 className="text-gray-900 font-black mb-6 text-sm uppercase tracking-widest">{t('footer.follow')}</h4>
                         <div className="flex gap-3">
                             {socialLinks.map((social, index) => (
                                 <a
@@ -106,24 +114,34 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-gray-100 pt-8">
-                    <p className="text-gray-400 text-[10px] font-black uppercase tracking-widest">
+                <div className={`flex flex-col md:flex-row justify-between items-center gap-6 border-t border-gray-100 pt-8 ${isRtl ? 'md:flex-row-reverse' : ''}`}>
+                    <p className="text-gray-400 text-[11px] font-bold uppercase tracking-[0.15em] order-2 md:order-1">
                         © {currentYear} AGRO MART. {t('footer.rights')}
                     </p>
 
-                    <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400">
-                        <span>Developed by</span>
+                    <div className={`flex items-center gap-3 text-[11px] font-black uppercase tracking-widest order-1 md:order-2 bg-gray-50/50 px-4 py-2 rounded-full border border-gray-100 transition-all hover:shadow-sm`}>
+                        <span className="text-gray-400 flex items-center gap-1.5">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-300">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            {t('footer.left')}
+                        </span>
+
                         <a
                             href="https://globalnexuseg.com"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-600 hover:text-agri-green transition-all duration-300 border-b border-transparent hover:border-agri-green pb-0.5"
+                            className="relative group text-gray-800 hover:text-agri-green transition-all duration-300"
                         >
-                            Global Nexus
+                            <span className="relative z-10">Global Nexus</span>
+                            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-agri-green transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                         </a>
                     </div>
                 </div>
+
             </div>
+
         </footer>
     );
 }

@@ -126,10 +126,16 @@ export default function Navbar() {
                 ${mobileMenuOpen ? 'translate-x-0' : (isRtl ? '-translate-x-full' : 'translate-x-full')}`}>
 
                 <div className="flex flex-col h-full p-6">
-                    <div className="flex justify-between items-center mb-8">
-                        <span className="text-[10px] font-black text-agri-green uppercase tracking-[0.2em]">{t('nav.menu_title')}</span>
-                        <button onClick={() => setMobileMenuOpen(false)} className="w-9 h-9 flex items-center justify-center bg-gray-50 rounded-full text-gray-400">
-                            <HiX size={18} />
+                    <div className="flex justify-between items-center mb-10">
+                        <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className="block">
+                            <img
+                                src={logoMain}
+                                alt="Logo"
+                                className="h-12 w-auto object-contain"
+                            />
+                        </NavLink>
+                        <button onClick={() => setMobileMenuOpen(false)} className="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-400 hover:bg-gray-100 transition-colors">
+                            <HiX size={20} />
                         </button>
                     </div>
 
@@ -188,6 +194,7 @@ export default function Navbar() {
                                 ))}
                             </div>
                         </div>
+
                     </div>
 
                     <div className="mt-auto pt-6 border-t border-gray-50">
@@ -198,6 +205,7 @@ export default function Navbar() {
                         </div>
                         <p className="text-[8px] text-center font-bold text-gray-300 uppercase tracking-[0.2em]">{t('nav.footer_tag')}</p>
                     </div>
+
                 </div>
             </div>
         </>

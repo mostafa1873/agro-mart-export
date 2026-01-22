@@ -44,24 +44,32 @@ const resources = {
                     desc1: "Agro Mart Export is more than just a company; it is a bridge connecting Egypt’s rich agricultural heritage with the global market's demand for premium quality.",
                     desc2: "Founded on principles of integrity and excellence, we specialize in sourcing the finest fruits and vegetables directly from our local farms."
                 },
-                stats: { tons: "Tons Exported", markets: "Global Markets", farms: "Partner Farms", exp: "Years of Experience" },
-                values: {
-                    title: "Our Values",
-                    desc: "What makes Agro Mart the preferred partner for international importers.",
-                    v1_title: "Pure Quality",
-                    v1_desc: "Rigorous testing from soil to shipment to ensure 100% pesticide-free products.",
-                    v2_title: "Fair Trade",
-                    v2_desc: "Empowering local farmers with fair pricing and sustainable agricultural training."
+                portfolio: {
+                    subTitle: "GLOBAL STANDARDS",
+                    bgText: "GALLERY",
+                    mainTitlePart1: "Some Of",
+                    mainTitlePart2: "Our Operations"
+                },
+                company: {
+                    since: "From the Heart of Egypt",
+                    title_part1: "Egyptian Roots,",
+                    title_part2: "Global Reach",
+                    mission: "From Egypt’s fertile land, we begin our journey as a new generation of fruit and vegetable exporters, placing quality and commitment at the core of everything we do. We carefully select our crops from trusted farms and oversee every stage of preparation and packing to ensure fresh products that meet international market requirements. We aim to build a modern export system based on reliable and sustainable logistics solutions, while continuously developing our operations and building long-term partnerships founded on transparency and responsiveness to our clients’ needs. Our goal is to represent Egyptian agriculture with integrity in global markets and achieve steady, sustainable growth.",
+                    exp_label: "Skilled Team",
+                    dest_label: "International Partners",
+                    read_more: "Start a Partnership",
+                    quality_badge: "Premium Egyptian Quality"
                 },
                 process: {
-                    title: "How We Work",
-                    desc: "From the rich Nile Delta to international ports, we control every detail.",
-                    s1_title: "Sourcing",
-                    s1_desc: "Selecting high-tier farms that follow strictly organic standards.",
-                    s2_title: "Processing",
-                    s2_desc: "Precise sorting and cooling using the latest technologies.",
-                    s3_title: "Logistics",
-                    s3_desc: "Fast and secure shipping to ensure maximum freshness."
+                    badge: "How We Make a Difference",
+                    title: "A Journey of Quality from Farm to World",
+                    desc: "We don’t just export products; we deliver the fruits of the land with extreme care, passing through three essential stages that guarantee international quality standards.",
+                    s1_title: "Sustainable Farming",
+                    s1_desc: "Our journey begins at our selected farms, where we rely on the latest eco-friendly agricultural techniques to ensure 100% natural, nutrient-rich growth.",
+                    s2_title: "Smart Sorting & Packing",
+                    s2_desc: "Each fruit undergoes rigorous inspection and strict quality tests, then is packed in specially designed packaging to maintain freshness for as long as possible.",
+                    s3_title: "Export & Logistics",
+                    s3_desc: "With our advanced logistics network, we reach global markets in record time, maintaining the cold chain and quality until it reaches your doorstep."
                 },
                 certs: {
                     title1: "Certified",
@@ -77,6 +85,13 @@ const resources = {
             products: {
                 seo_title: "Our Products | High-Quality Egyptian Fruits & Vegetables",
                 seo_description: "Explore our range of fresh and IQF frozen Egyptian produce. Premium onions, oranges, strawberries, and pomegranates exported worldwide.",
+            },
+            productSlider: {
+                title_part1: "Our",
+                title_part2: "Products",
+                badge: "Pure",
+                view_all: "View All",
+                grade: "Premium Quality"
             },
             contact: {
                 badge: "Contact Us",
@@ -157,24 +172,32 @@ const resources = {
                     desc1: "شركة اجرو مارت للتصدير ليست مجرد شركة؛ بل هي جسر يربط بين التراث الزراعي الغني لمصر ومتطلبات السوق العالمية للجودة الفائقة.",
                     desc2: "تأسست شركتنا على مبادئ النزاهة والتميز، ونحن متخصصون في توريد أجود أنواع الفاكهة والخضروات مباشرة من مزارعنا المحلية."
                 },
-                stats: { tons: "طن مُصدر", markets: "سوق عالمي", farms: "مزرعة شريكة", exp: "سنوات خبرة" },
-                values: {
-                    title: "قيمنا",
-                    desc: "ما يجعل اجرو مارت الشريك المفضل للمستوردين العالميين.",
-                    v1_title: "جودة نقية",
-                    v1_desc: "اختبارات صارمة من التربة إلى الشحن لضمان منتجات خالية من المبيدات بنسبة 100%.",
-                    v2_title: "تجارة عادلة",
-                    v2_desc: "تمكين المزارعين المحليين بأسعار عادلة وتدريبات زراعية مستدامة."
+                portfolio: {
+                    subTitle: "معايير عالمية",
+                    bgText: "أعمالنا",
+                    mainTitlePart1: "جانب من",
+                    mainTitlePart2: "أعمالنا"
+                },
+                company: {
+                    since: "من قلب مصر",
+                    title_part1: "جذور مصرية،",
+                    title_part2: "بآفاق عالمية",
+                    mission: "من أرض مصر الخصبة، نبدأ رحلتنا كجيل جديد من شركات تصدير الخضروات والفاكهة، واضعين الجودة والالتزام في مقدمة أولوياتنا. نحرص على اختيار محاصيلنا بعناية من أفضل الأراضي الزراعية، مع الاهتمام بجميع مراحل التجهيز والتعبئة لضمان وصول منتجات طازجة تلبي متطلبات الأسواق العالمية. نسعى إلى بناء منظومة تصدير حديثة تعتمد على حلول لوجستية موثوقة ومستدامة، ونؤمن بأهمية التطوير المستمر وبناء علاقات طويلة الأمد مع شركائنا، قائمة على الشفافية والالتزام باحتياجات العملاء. هدفنا هو تمثيل الزراعة المصرية بصورة مشرفة في الأسواق الخارجية، وتحقيق نمو مستدام خطوة بخطوة.",
+                    exp_label: "فريق متخصص",
+                    dest_label: "شركاء دوليون",
+                    read_more: "ابدأ التعاون معنا",
+                    quality_badge: "جودة مصرية فائقة"
                 },
                 process: {
-                    title: "كيف نعمل",
-                    desc: "من دلتا النيل الغنية إلى الموانئ الدولية، نتحكم في كل التفاصيل.",
-                    s1_title: "التوريد",
-                    s1_desc: "اختيار المزارع رفيعة المستوى التي تتبع المعايير العضوية فقط.",
-                    s2_title: "المعالجة",
-                    s2_desc: "فرز وتبريد دقيق باستخدام أحدث التقنيات.",
-                    s3_title: "الخدمات اللوجستية",
-                    s3_desc: "شحن سريع وآمن لضمان أقصى درجات النضارة."
+                    badge: "كيف نصنع الفرق",
+                    title: "رحلة الجودة من الأرض إلى العالم",
+                    desc: "نحن لا نصدر المنتجات فحسب، بل ننقل ثمار الأرض بعناية فائقة تمر عبر ثلاث محطات أساسية تضمن لك معايير الجودة العالمية.",
+                    s1_title: "الزراعة المستدامة",
+                    s1_desc: "تبدأ رحلتنا من مزارعنا المختارة، حيث نعتمد على أحدث التقنيات الزراعية الصديقة للبيئة لضمان نمو ثمار طبيعية 100% وغنية بالقيم الغذائية.",
+                    s2_title: "الفرز والتعبئة الذكية",
+                    s2_desc: "تخضع كل ثمرة لعملية فحص دقيقة واختبارات جودة صارمة، ثم تُعبأ في عبوات مصممة خصيصاً للحفاظ على نضارتها أطول فترة ممكنة.",
+                    s3_title: "التصدير والخدمات اللوجستية",
+                    s3_desc: "بفضل شبكتنا اللوجستية المتطورة، نصل بمنتجاتنا إلى الأسواق العالمية في وقت قياسي، مع الحفاظ على سلسلة التبريد والجودة حتى وصولها إليك."
                 },
                 certs: {
                     title1: "امتياز",
@@ -190,6 +213,13 @@ const resources = {
             products: {
                 seo_title: "منتجاتنا | تصدير الخضروات والفواكه المصرية عالية الجودة",
                 seo_description: "تصفح قائمة منتجاتنا من المحاصيل المصرية الطازجة والمجمدة. نوفر أفضل أنواع البصل، البرتقال، الفراولة، والرمان المطابق للمواصفات الأوروبية.",
+            },
+            productSlider: {
+                title_part1: "بعض",
+                title_part2: "منتجاتنا",
+                badge: "طبيعي",
+                view_all: "عرض الكل",
+                grade: "جودة ممتازة"
             },
             contact: {
                 badge: "تواصل معنا",
@@ -270,24 +300,32 @@ const resources = {
                     desc1: "AGRO MART Export non è solo un'azienda; è un ponte che collega il ricco patrimonio agricolo dell'Egitto con le esigenze di alta qualità del mercato globale.",
                     desc2: "Fondata sui principi di integrità ed eccellenza, siamo specializzati nella fornitura dei migliori frutti e ortaggi direttamente dalle nostre aziende agricole locali."
                 },
-                stats: { tons: "Tonnellate Esportate", markets: "Mercati Globali", farms: "Aziende Agricole Partner", exp: "Anni di Esperienza" },
-                values: {
-                    title: "I Nostri Valori",
-                    desc: "Cò che rende Al-Zayyat il partner preferito dagli importatori internazionali.",
-                    v1_title: "Qualità Pura",
-                    v1_desc: "Test rigorosi dal suolo alla spedizione per garantire prodotti privi di pesticidi al 100%.",
-                    v2_title: "Commercio Equo",
-                    v2_desc: "Sosteniamo gli agricoltori locali con prezzi equi e formazione agricola sostenibile."
+                portfolio: {
+                    subTitle: "STANDARD INTERNAZIONALI",
+                    bgText: "GALLERIA",
+                    mainTitlePart1: "Uno sguardo alle",
+                    mainTitlePart2: "nostre operazioni"
+                },
+                company: {
+                    since: "Dal Cuore dell'Egitto",
+                    title_part1: "Radici Egiziane,",
+                    title_part2: "Orizzonti Globali",
+                    mission: "Dalle fertili terre dell’Egitto, iniziamo il nostro percorso come una nuova generazione di esportatori di frutta e verdura, ponendo qualità e impegno al centro di tutto ciò che facciamo. Selezioniamo con cura i nostri prodotti dalle migliori aziende agricole e seguiamo ogni fase di preparazione e confezionamento per garantire prodotti freschi conformi agli standard dei mercati internazionali. Il nostro obiettivo è costruire un sistema di esportazione moderno, basato su soluzioni logistiche affidabili e sostenibili, sviluppando allo stesso tempo relazioni a lungo termine con i nostri partner, fondate sulla trasparenza e sull’attenzione alle esigenze dei clienti. Vogliamo rappresentare l’agricoltura egiziana con professionalità nei mercati globali e crescere in modo costante e sostenibile.",
+                    exp_label: "Team Specializzato",
+                    dest_label: "Partner Internazionali",
+                    read_more: "Avvia una collaborazione",
+                    quality_badge: "Qualità Egiziana Superiore"
                 },
                 process: {
-                    title: "Come Lavoriamo",
-                    desc: "Dal ricco Delta del Nilo ai porti internazionali, controlliamo ogni dettaglio.",
-                    s1_title: "Approvvigionamento",
-                    s1_desc: "Selezione di aziende agricole di alto livello che seguono solo standard biologici.",
-                    s2_title: "Lavorazione",
-                    s2_desc: "Cernita e raffreddamento precisi utilizzando le ultime tecnologie.",
-                    s3_title: "Logistica",
-                    s3_desc: "Spedizioni rapide e sicure per garantire il massimo grado di freschezza."
+                    badge: "Come Facciamo la Differenza",
+                    title: "Il Viaggio della Qualità dalla Terra al Mondo",
+                    desc: "Non esportiamo solo prodotti; consegniamo i frutti della terra con estrema cura attraverso tre fasi essenziali che garantiscono standard di qualità internazionali.",
+                    s1_title: "Agricoltura Sostenibile",
+                    s1_desc: "Il nostro viaggio inizia dalle nostre fattorie selezionate, dove utilizziamo le ultime tecniche agricole eco-compatibili per garantire una crescita naturale al 100% e ricca di nutrienti.",
+                    s2_title: "Cernita e Imballaggio Intelligente",
+                    s2_desc: "Ogni frutto è sottoposto a un'ispezione accurata e a rigorosi test di qualità, per poi essere confezionato in imballaggi progettati per preservarne la freschezza il più a lungo possibile.",
+                    s3_title: "Esportazione e Logistica",
+                    s3_desc: "Grazie alla nostra rete logistica avanzata, raggiungiamo i mercati globali in tempi record, mantenendo la catena del freddo e la qualità fino alla consegna finale."
                 },
                 certs: {
                     title1: "Eccellenza",
@@ -303,6 +341,13 @@ const resources = {
             products: {
                 seo_title: "I Nostri Prodotti | Esportazione di Frutta e Verdura Egiziana",
                 seo_description: "Scopri la nostra gamma di prodotti egiziani freschi e surgelati IQF. Cipolle, arance e fragole di alta qualità esportate in tutto il mondo.",
+            },
+            productSlider: {
+                title_part1: "Alcuni dei",
+                title_part2: "Nostri Prodotti",
+                badge: "Naturale",
+                view_all: "Mostra Tutto",
+                grade: "Qualità Premium"
             },
             contact: {
                 badge: "Contattaci",

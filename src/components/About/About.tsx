@@ -1,13 +1,50 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import heroImg from '../../assets/about-page.png';
+import WorkGallerySlider from './WorkGallerySlider';
+import ProductSlider from './ProductSlider';
+import aboutImg from '../../assets/about-section.jpg';
+import { Link } from 'react-router-dom';
+import howImg1 from '../../assets/how-1.png';
+import howImg2 from '../../assets/how-2.png';
+import howImg3 from '../../assets/how-3.png';
+import productsData from '../../data/products.json';
+import { motion } from 'framer-motion';
+
+
+const myWorkImages = [
+    {
+        url: 'https://images.unsplash.com/photo-1590682680695-43b964a3ae17',
+        title: 'Main Factory Unit',
+        category: 'Production',
+        size: 'large'
+    },
+    {
+        url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d',
+        title: 'Export Logistics',
+        category: 'Logistics',
+        size: 'small'
+    },
+    {
+        url: 'https://images.unsplash.com/photo-1574944966950-8164c2165b3b',
+        title: 'Quality Check',
+        category: 'Standard',
+        size: 'small'
+    },
+    {
+        url: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9',
+        title: 'Global Delivery',
+        category: 'Shipping',
+        size: 'tall'
+    },
+];
 
 export default function About() {
     const { t, i18n } = useTranslation();
     const isRtl = i18n.language === 'ar';
 
     return (
-        <div className="pt-24 lg:pt-32 pb-12 lg:pb-20 overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
+        <div className="pt-24 lg:pt-24 pb-12 lg:pb-20 overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
 
             <Helmet>
                 <title>{t('about.hero.seo_title')}</title>
@@ -17,139 +54,262 @@ export default function About() {
                 <link rel="canonical" href="https://zayatexport.com/about" />
             </Helmet>
 
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="w-full mx-auto px-6">
 
-                {/* --- 1. القصة والهوية (Hero Section) --- */}
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24 lg:mb-32">
-                    {/* النص: ترتيبه يتغير في الموبايل بالـ order */}
-                    <div className={`${isRtl ? 'lg:text-right' : 'lg:text-left'} text-center order-2 lg:order-1`}>
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-agri-green/10 text-agri-green rounded-full mb-6">
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em]">{t('about.hero.badge')}</span>
+                {/* 1. Hero */}
+                <div className="flex flex-col items-center mb-16 lg:mb-20 pt-5">
+                    <div className="w-full max-w-5xl text-center mb-8 lg:mb-16 px-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-agri-green/10 text-agri-green rounded-full mb-4 lg:mb-6 transition-transform hover:scale-105">
+                            <span className="text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap">
+                                {t('about.hero.badge')}
+                            </span>
                         </div>
-                        <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-[0.9] mb-8">
+
+                        <h2 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-[1] lg:leading-[0.9] mb-4 lg:mb-6">
                             {t('about.hero.title1')} <br />
                             <span className="text-agri-green">{t('about.hero.title2')}</span>
                         </h2>
-                        <p className="text-base lg:text-lg text-gray-500 leading-relaxed mb-6 font-medium">
-                            {t('about.hero.desc1')}
-                        </p>
-                        <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
-                            {t('about.hero.desc2')}
-                        </p>
+
+                        <div className="max-w-2xl mx-auto space-y-3 lg:space-y-4">
+                            <p className="text-base sm:text-lg lg:text-2xl text-gray-600 leading-snug lg:leading-relaxed font-medium">
+                                {t('about.hero.desc1')}
+                            </p>
+                            <p className="text-gray-400 text-xs sm:text-sm lg:text-lg leading-relaxed max-w-xl mx-auto">
+                                {t('about.hero.desc2')}
+                            </p>
+                        </div>
                     </div>
 
-                    {/* الصورة: الانعكاس واللف دوران حسب اللغة */}
-                    <div className="order-1 lg:order-2 relative px-4 lg:px-0">
-                        <div className={`relative z-10 rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-2xl transition-transform duration-700 
-                            ${isRtl ? 'lg:-rotate-2 hover:rotate-0' : 'lg:rotate-2 hover:rotate-0'}`}>
-                            <img
-                                src="https://images.unsplash.com/photo-1595855759920-86582396756a?q=80&w=2070&auto=format&fit=crop"
-                                alt="Egyptian Farm"
-                                className="w-full h-[350px] lg:h-[500px] object-cover"
-                            />
-                        </div>
-                        <div className={`absolute -top-4 ${isRtl ? '-left-4' : '-right-4'} w-24 h-24 bg-agri-orange/20 rounded-full blur-2xl -z-10`} />
-                        <div className={`absolute -bottom-6 ${isRtl ? '-right-6 rotate-[-12deg]' : '-left-6 rotate-12'} w-32 h-32 bg-agri-green/10 rounded-[2.5rem] -z-10`} />
-                    </div>
-                </div>
-
-                {/* --- 2. الأرقام (Stats) --- */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-24 lg:mb-32">
-                    {[
-                        { label: t('about.stats.tons'), value: '15k+' },
-                        { label: t('about.stats.markets'), value: '24' },
-                        { label: t('about.stats.farms'), value: '150+' },
-                        { label: t('about.stats.exp'), value: '12+' },
-                    ].map((stat, index) => (
-                        <div key={index} className="text-center p-6 lg:p-8 bg-gray-50 rounded-[2rem] lg:rounded-[2.5rem] hover:bg-white hover:shadow-xl transition-all duration-500 group border border-transparent hover:border-gray-100">
-                            <div className="text-3xl lg:text-5xl font-black text-gray-900 group-hover:text-agri-green transition-colors mb-2 tracking-tighter">
-                                {stat.value}
+                    <div className="relative w-full max-w-6xl mx-auto px-4 lg:px-0">
+                        <div className="relative">
+                            <div className="relative z-10 rounded-[2rem] lg:rounded-[4rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] lg:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)]">
+                                <img
+                                    src={heroImg}
+                                    alt="Egyptian Farm"
+                                    className="w-full h-[250px] sm:h-[400px] lg:h-[600px] object-cover transition-transform duration-1000 group-hover:scale-105"
+                                />
                             </div>
-                            <div className="text-[9px] lg:text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                                {stat.label}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* --- 3. القيم (Values) --- */}
-                <div className="bg-gray-900 rounded-[3rem] lg:rounded-[4rem] p-8 lg:p-20 relative overflow-hidden mb-24 lg:mb-32">
-                    <div className={`absolute top-0 ${isRtl ? 'left-0' : 'right-0'} w-64 h-64 bg-agri-green/20 rounded-full blur-[100px]`} />
-                    <div className="relative z-10 grid lg:grid-cols-3 gap-12">
-                        <div className={`${isRtl ? 'lg:text-right' : 'lg:text-left'} text-center`}>
-                            <h3 className="text-white text-3xl lg:text-4xl font-black mb-4 lg:mb-6 tracking-tight">
-                                {isRtl ? (
-                                    <>قيم <span className="text-agri-green">الزيات</span></>
-                                ) : (
-                                    <>{t('about.values.title').split(' ')[0]} <span className="text-agri-green">{t('about.values.title').split(' ')[1]}</span></>
-                                )}
-                            </h3>
-                            <p className="text-gray-400 text-sm lg:text-base font-medium">{t('about.values.desc')}</p>
-                        </div>
-                        <div className="lg:col-span-2 grid sm:grid-cols-2 gap-8 lg:gap-12 text-center sm:text-start">
-                            <div className="space-y-4">
-                                <div className={`w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-agri-green font-black text-xl mx-auto ${isRtl ? 'sm:mr-0 sm:ml-auto' : 'sm:ml-0 sm:mr-auto'}`}>01</div>
-                                <h4 className="text-white font-bold text-lg lg:text-xl uppercase tracking-tighter">{t('about.values.v1_title')}</h4>
-                                <p className="text-gray-500 text-sm leading-relaxed">{t('about.values.v1_desc')}</p>
-                            </div>
-                            <div className="space-y-4">
-                                <div className={`w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-agri-green font-black text-xl mx-auto ${isRtl ? 'sm:mr-0 sm:ml-auto' : 'sm:ml-0 sm:mr-auto'}`}>02</div>
-                                <h4 className="text-white font-bold text-lg lg:text-xl uppercase tracking-tighter">{t('about.values.v2_title')}</h4>
-                                <p className="text-gray-500 text-sm leading-relaxed">{t('about.values.v2_desc')}</p>
-                            </div>
+                            <div className={`absolute -top-5 lg:-top-10 ${i18n.language === 'ar' ? '-left-5 lg:-left-10' : '-right-5 lg:-right-10'} w-24 h-24 lg:w-40 lg:h-40 bg-agri-orange/15 rounded-full blur-2xl lg:blur-3xl -z-10`} />
+                            <div className={`absolute -bottom-6 lg:-bottom-12 ${i18n.language === 'ar' ? '-right-6 rotate-[-12deg]' : '-left-6 rotate-12'} w-28 h-28 lg:w-48 lg:h-48 bg-agri-green/10 rounded-[2rem] lg:rounded-[3rem] -z-10`} />
                         </div>
                     </div>
                 </div>
 
-                {/* --- 4. رحلة العمل (Process) --- */}
-                <div className="mb-24 lg:mb-32">
-                    <div className="text-center max-w-2xl mx-auto mb-12 lg:mb-16">
-                        <h2 className="text-3xl lg:text-5xl font-black text-gray-900 tracking-tighter mb-4">{t('about.process.title')}</h2>
-                        <p className="text-sm lg:text-base text-gray-500 font-medium px-4">{t('about.process.desc')}</p>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-8 lg:gap-12 relative">
-                        <div className="hidden lg:block absolute top-1/2 left-0 w-full h-[2px] bg-gray-100 -z-10" />
-                        {[
-                            { step: '01', title: t('about.process.s1_title'), desc: t('about.process.s1_desc') },
-                            { step: '02', title: t('about.process.s2_title'), desc: t('about.process.s2_desc') },
-                            { step: '03', title: t('about.process.s3_title'), desc: t('about.process.s3_desc') },
-                        ].map((item, idx) => (
-                            <div key={idx} className={`bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group text-center ${isRtl ? 'lg:text-right' : 'lg:text-left'}`}>
-                                <div className={`w-14 h-14 bg-agri-green text-white rounded-2xl flex items-center justify-center font-black text-xl mb-6 group-hover:rotate-12 transition-transform mx-auto ${isRtl ? 'lg:mr-0 lg:ml-auto' : 'lg:ml-0 lg:mr-auto'}`}>
-                                    {item.step}
-                                </div>
-                                <h4 className="text-lg lg:text-xl font-black text-gray-900 mb-3 uppercase tracking-tighter">{item.title}</h4>
-                                <p className="text-gray-500 text-xs lg:text-sm leading-relaxed">{item.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* --- 5. الشهادات (Partners & Certs) --- */}
-                <div className="mb-24 lg:mb-32 py-12 lg:py-16 bg-gray-50 rounded-[3rem] lg:rounded-[4rem] px-6 lg:px-10">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        <div className={`${isRtl ? 'lg:text-right' : 'lg:text-left'} text-center`}>
-                            <h2 className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tighter mb-6">
-                                {t('about.certs.title1')} <br /> <span className="text-agri-green">{t('about.certs.title2')}</span>
-                            </h2>
-                            <p className="text-sm lg:text-base text-gray-500 mb-8 max-w-md mx-auto ${isRtl ? 'lg:mr-0' : 'lg:ml-0'}">{t('about.certs.desc')}</p>
-                            <div className={`flex flex-wrap justify-center ${isRtl ? 'lg:justify-start' : 'lg:justify-start'} gap-3`}>
-                                {['Global G.A.P', 'ISO 22000', 'Organic'].map((cert) => (
-                                    <span key={cert} className="px-4 py-2 bg-white rounded-full text-[9px] font-black text-gray-400 border border-gray-100 uppercase tracking-widest">
-                                        {cert}
+                {/* ... Style */}
+                <div className="relative w-full py-4 lg:py-6 bg-agri-green overflow-hidden rotate-[-1deg] scale-[1.02] z-20 shadow-xl">
+                    <div className="flex whitespace-nowrap">
+                        <div className={`flex items-center ${i18n.language === 'ar' ? 'animate-marquee-rtl' : 'animate-marquee-ltr'}`}>
+                            {[1, 2, 3, 4, 5, 6].map((i) => (
+                                <div key={i} className="flex items-center shrink-0">
+                                    <span className="text-white text-xl lg:text-3xl font-black uppercase tracking-tighter mx-8">
+                                        {t('about.hero.title2')}
                                     </span>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-3 lg:gap-4 font-black italic">
-                            {[1, 2, 3, 4].map((i) => (
-                                <div key={i} className="h-20 lg:h-24 bg-white/50 backdrop-blur-sm border border-white rounded-[1.5rem] lg:rounded-[2rem] flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer text-gray-400 text-xs lg:text-base">
-                                    PARTNER {i}
+                                    <span className="text-white/40 text-2xl">★</span>
+                                    <span className="text-white text-xl lg:text-3xl font-light italic tracking-tighter mx-8">
+                                        {t('about.company.title_part2')}
+                                    </span>
+                                    <span className="text-white/40 text-2xl">★</span>
                                 </div>
                             ))}
                         </div>
                     </div>
+
+                    <style dangerouslySetInnerHTML={{
+                        __html: `
+        @keyframes marqueeLTR {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes marqueeRTL {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
+        .animate-marquee-ltr {
+            animation: marqueeLTR 25s linear infinite;
+        }
+        .animate-marquee-rtl {
+            animation: marqueeRTL 25s linear infinite;
+        }
+    `}} />
                 </div>
+
+                {/* 2. About */}
+                <section dir={i18n.language === 'ar' ? 'rtl' : 'ltr'} className="w-full py-16 lg:py-24 bg-white">
+                    <div className="max-w-6xl mx-auto px-6 lg:px-12">
+                        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+                            <div className="w-full lg:w-5/12">
+                                <div className="relative group">
+                                    <div className="absolute -inset-3 border border-gray-200 rounded-2xl -z-10 group-hover:scale-[1.02] transition-transform duration-500" />
+                                    <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-sm">
+                                        <img
+                                            src={aboutImg}
+                                            alt="Company Presentation"
+                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-black/5" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-full lg:w-7/12 space-y-6">
+                                <div className={`space-y-4 text-center ${i18n.language === 'ar' ? 'lg:text-right' : 'lg:text-left'}`}>
+                                    <div className="inline-flex items-center gap-2">
+                                        <span className="w-6 h-[1px] bg-agri-green"></span>
+                                        <span className="text-agri-green font-semibold text-[10px] uppercase tracking-[0.2em]">
+                                            {t('about.company.since')}
+                                        </span>
+                                        <span className="w-6 h-[1px] bg-agri-green lg:hidden"></span>
+                                    </div>
+
+                                    <h2 className="text-3xl lg:text-5xl font-bold text-gray-800 leading-tight">
+                                        {t('about.company.title_part1')} <br />
+                                        <span className="text-agri-green/90">{t('about.company.title_part2')}</span>
+                                    </h2>
+
+                                    <p className="text-gray-500 text-base lg:text-lg leading-relaxed font-normal mx-auto lg:mx-0 max-w-xl">
+                                        {t('about.company.mission')}
+                                    </p>
+                                </div>
+
+                                <div className={`pt-4 text-center ${i18n.language === 'ar' ? 'lg:text-right' : 'lg:text-left'}`}>
+                                    <Link to="/contact">
+                                        <button className="group relative px-8 py-3.5 bg-white border border-agri-green text-agri-green overflow-hidden rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 hover:text-white w-full sm:w-auto">
+                                            <span className="relative z-10">{t('about.company.read_more')}</span>
+                                            <div className="absolute inset-0 bg-agri-green translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* 3. Work Gallery */}
+                <WorkGallerySlider images={myWorkImages} />
+
+                {/* 4. Process */}
+                <div className="py-16 lg:py-32 bg-white overflow-hidden">
+                    <div className="max-w-7xl mx-auto px-6">
+
+                        {/* Header Section */}
+                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 lg:mb-24">
+                            <div className="max-w-2xl text-center lg:text-start">
+                                <span className="text-agri-green font-bold text-xs lg:text-sm uppercase tracking-[0.4em] mb-4 block">
+                                    {t('about.process.badge')}
+                                </span>
+                                <h2 className="text-4xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-none">
+                                    {t('about.process.title')}
+                                </h2>
+                            </div>
+                            <div className="max-w-md mx-auto lg:mx-0">
+                                <p className={`text-gray-500 text-base lg:text-lg font-light leading-relaxed border-agri-green ${isRtl ? 'border-r-4 pr-6' : 'border-l-4 pl-6'}`}>
+                                    {t('about.process.desc')}
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Steps Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                            {[
+                                { step: '01', title: t('about.process.s1_title'), desc: t('about.process.s1_desc'), img: howImg1 },
+                                { step: '02', title: t('about.process.s2_title'), desc: t('about.process.s2_desc'), img: howImg2 },
+                                { step: '03', title: t('about.process.s3_title'), desc: t('about.process.s3_desc'), img: howImg3 },
+                            ].map((item, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    // التفاعل باللمس للموبايل والماوس للكمبيوتر
+                                    whileTap={{ scale: 0.98 }}
+                                    className="group relative h-[480px] lg:h-[600px] overflow-hidden rounded-[3rem] bg-gray-900 shadow-2xl transition-all duration-500"
+                                >
+                                    {/* الصورة الخلفية */}
+                                    <img
+                                        src={item.img}
+                                        alt={item.title}
+                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-active:scale-110 opacity-60 group-hover:opacity-40 group-active:opacity-40"
+                                    />
+
+                                    {/* Gradient Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-90 transition-opacity duration-500 group-hover:via-black/60 group-active:via-black/60" />
+
+                                    {/* رقم المرحلة */}
+                                    <div className={`absolute top-8 ${isRtl ? 'left-8' : 'right-8'}`}>
+                                        <span className="text-6xl lg:text-7xl font-black text-white/10 transition-colors duration-500 group-hover:text-agri-green group-active:text-agri-green">
+                                            {item.step}
+                                        </span>
+                                    </div>
+
+                                    {/* المحتوى السفلي */}
+                                    <div className="absolute bottom-0 p-8 lg:p-12 w-full z-10">
+                                        <div className="flex items-center gap-4 mb-5">
+                                            <div className="w-10 h-[2px] bg-agri-green group-hover:w-20 group-active:w-20 transition-all duration-500" />
+                                            <span className="text-agri-green font-bold tracking-[0.2em] text-xs lg:text-sm uppercase">Phase {item.step}</span>
+                                        </div>
+
+                                        <h4 className="text-3xl lg:text-4xl font-bold text-white mb-6 group-hover:text-agri-green group-active:text-agri-green transition-colors duration-300">
+                                            {item.title}
+                                        </h4>
+
+                                        {/* الوصف - يظهر باللمس في الموبايل */}
+                                        <div className="overflow-hidden">
+                                            <p className="text-gray-200 leading-relaxed text-sm lg:text-base opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 group-active:opacity-100 group-active:translate-y-0 transition-all duration-700 ease-out">
+                                                {item.desc}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* الإطار الداخلي الجمالي */}
+                                    <div className="absolute inset-6 border border-white/0 group-hover:border-white/20 group-active:border-white/20 rounded-[2.2rem] transition-all duration-700 pointer-events-none" />
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* ... Style */}
+                <div className="relative w-full py-4 lg:py-6 bg-agri-green overflow-hidden rotate-[-1deg] scale-[1.02] z-20 shadow-xl">
+                    <div className="flex whitespace-nowrap">
+                        <div className={`flex items-center ${i18n.language === 'ar' ? 'animate-marquee-rtl' : 'animate-marquee-ltr'}`}>
+                            {[1, 2, 3, 4, 5, 6].map((i) => (
+                                <div key={i} className="flex items-center shrink-0">
+                                    <span className="text-white text-xl lg:text-3xl font-black uppercase tracking-tighter mx-8">
+                                        {t('about.hero.title2')}
+                                    </span>
+                                    <span className="text-white/40 text-2xl">★</span>
+                                    <span className="text-white text-xl lg:text-3xl font-light italic tracking-tighter mx-8">
+                                        {t('about.company.title_part2')}
+                                    </span>
+                                    <span className="text-white/40 text-2xl">★</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <style dangerouslySetInnerHTML={{
+                        __html: `
+        @keyframes marqueeLTR {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes marqueeRTL {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
+        .animate-marquee-ltr {
+            animation: marqueeLTR 25s linear infinite;
+        }
+        .animate-marquee-rtl {
+            animation: marqueeRTL 25s linear infinite;
+        }
+    `}} />
+                </div>
+
+                {/* --- 5.  --- */}
+                <ProductSlider
+                    // لاحظ التغيير هنا: ضفنا .products
+                    products={productsData.products}
+                    t={t}
+                    isRtl={isRtl}
+                />
 
                 {/* --- 6. الختام (CTA) --- */}
                 <div className="relative overflow-hidden bg-agri-green rounded-[3rem] lg:rounded-[4rem] p-10 lg:p-24 text-center">

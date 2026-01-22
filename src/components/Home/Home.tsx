@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import aboutSection from '../../assets/about-section.png';
-import minImage from '../../assets/min-products.png';
+import aboutSection from '../../assets/about-section.jpg';
+import minImage from '../../assets/min-products.jpeg';
 import WhyChooseUs from './WhyChooseUs';
 import homeImg from '../../assets/home.jpeg';
 import iqfImg from '../../assets/iqf.jpeg';
+import freshImg from '../../assets/fresh.jpeg';
+import brineImg from '../../assets/in-brine.jpeg';
+
+
 
 export default function Home() {
     const { t, i18n } = useTranslation();
@@ -288,13 +292,13 @@ export default function Home() {
                             },
                             {
                                 name: t('home.products.orange'),
-                                img: iqfImg,
+                                img: freshImg,
                                 category: t('home.products.fruit'),
                                 filterTag: 'fresh'
                             },
                             {
                                 name: t('home.products.strawberry'),
-                                img: iqfImg,
+                                img: brineImg,
                                 category: t('home.products.berry'),
                                 filterTag: 'in_brine'
                             }

@@ -19,9 +19,9 @@ const WorkGallerySlider: React.FC<{ images: GalleryItem[] }> = ({ images }) => {
     if (!images || images.length === 0) return null;
 
     return (
-        <section className="w-full py-16 lg:py-28 overflow-hidden">
-            <div className="relative max-w-7xl mx-auto px-4 mb-16 lg:mb-24 flex flex-col items-center">
 
+        <section className="w-full py-8 lg:py-12 overflow-hidden">
+            <div className="relative max-w-7xl mx-auto px-4 mb-12 lg:mb-16 flex flex-col items-center">
                 <div className="flex items-center gap-3 lg:gap-4 mb-4">
                     <span className="text-agri-green font-black text-xs lg:text-sm tracking-[0.3em] lg:tracking-[0.4em]">
                         02
@@ -44,60 +44,71 @@ const WorkGallerySlider: React.FC<{ images: GalleryItem[] }> = ({ images }) => {
                         </span>
                     </h2>
                 </div>
-
-                <div className="mt-6 lg:mt-8 flex items-center gap-1.5">
-                    <div className="h-1.5 w-1.5 rounded-full bg-agri-green animate-pulse" />
-                    <div className="h-[2px] w-16 lg:w-20 bg-gradient-to-r from-agri-green to-transparent" />
-                </div>
             </div>
 
-            <div className="max-w-[1400px] mx-auto px-4 lg:px-10">
-                <div className="relative h-[350px] md:h-[500px] lg:h-[650px] w-full overflow-hidden rounded-[2.5rem] lg:rounded-[4.5rem] ">
+            <div className="max-w-5xl mx-auto px-4 lg:px-10">
+                <div className="relative h-[300px] md:h-[450px] lg:h-[550px] w-full overflow-hidden rounded-[2.5rem] lg:rounded-[4rem] bg-gray-50 shadow-sm">
 
                     {images.map((item, i) => (
                         <div
                             key={i}
-                            className={`absolute inset-0 transition-all duration-[1500ms] cubic-bezier(0.4, 0, 0.2, 1) ${i === index ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-110 z-0'
+                            className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out ${i === index ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'
                                 }`}
                         >
                             <img
                                 src={item.url}
                                 alt=""
-                                className={`w-full h-full object-cover transition-transform duration-[6000ms] ease-out ${i === index ? 'scale-105' : 'scale-125'
+                                className={`w-full h-full object-cover transition-transform duration-[6000ms] ease-out ${i === index ? 'scale-105' : 'scale-110'
                                     }`}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-40" />
                         </div>
                     ))}
 
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+                    {/* Pagination Dots */}
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
                         {images.map((_, i) => (
                             <button
                                 key={i}
                                 onClick={() => setIndex(i)}
-                                className="py-4 group focus:outline-none"
+                                className="p-2 group focus:outline-none"
                             >
-                                <div className={`h-[3px] transition-all duration-500 rounded-full ${i === index ? 'w-12 bg-agri-green shadow-[0_0_15px_rgba(0,255,100,0.5)]' : 'w-6 bg-white/30 group-hover:bg-white/60'
+                                <div className={`h-1.5 transition-all duration-500 rounded-full ${i === index ? 'w-8 bg-agri-green' : 'w-2 bg-white/50 group-hover:bg-white'
                                     }`} />
                             </button>
                         ))}
                     </div>
 
+                    {/* Navigation */}
                     <button
                         onClick={() => setIndex(index === 0 ? images.length - 1 : index - 1)}
-                        className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white z-30 hidden lg:flex items-center justify-center hover:bg-agri-green transition-all"
+                        className="absolute left-8 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white z-30 hidden lg:flex items-center justify-center hover:bg-agri-green hover:border-agri-green hover:scale-110 hover:-translate-x-2 transition-all duration-300 group/btn"
                     >
-                        ←
+                        <svg
+                            width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                            className="group-hover/btn:-translate-x-0.5 transition-transform"
+                        >
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
                     </button>
+
                     <button
                         onClick={() => setIndex((index + 1) % images.length)}
-                        className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white z-30 hidden lg:flex items-center justify-center hover:bg-agri-green transition-all"
+                        className="absolute right-8 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white z-30 hidden lg:flex items-center justify-center hover:bg-agri-green hover:border-agri-green hover:scale-110 hover:translate-x-2 transition-all duration-300 group/btn"
                     >
-                        →
+                        <svg
+                            width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                            className="group-hover/btn:translate-x-0.5 transition-transform"
+                        >
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
                     </button>
                 </div>
             </div>
         </section>
+        
     );
 };
 

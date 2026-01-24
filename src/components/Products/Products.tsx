@@ -43,6 +43,7 @@ export default function Products() {
     };
 
     return (
+        
         <div className="pt-32 pb-20 bg-[#fcfcfc]" dir={isRtl ? 'rtl' : 'ltr'}>
 
             <Helmet>
@@ -55,7 +56,6 @@ export default function Products() {
 
             <div className="max-w-7xl mx-auto px-6">
 
-                {/* --- العنوان والفلاتر الزجاجية --- */}
                 <div className="text-center mb-20">
                     <h2 className="text-5xl lg:text-8xl font-black text-gray-900 mb-8 tracking-tighter uppercase">
                         {isRtl ? 'منتجاتنا' : lang === 'it' ? 'I Nostri' : 'Our'}{" "}
@@ -65,7 +65,6 @@ export default function Products() {
                     </h2>
 
                     <div className="flex flex-wrap justify-center gap-3">
-                        {/* الترتيب الجديد: الكل -> iqf -> fresh -> in_brine */}
                         {['all', 'iqf', 'fresh', 'in_brine'].map((f) => (
                             <button
                                 key={f}
@@ -81,7 +80,6 @@ export default function Products() {
                     </div>
                 </div>
 
-                {/* --- شبكة المنتجات --- */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {filteredProducts.map((product) => {
                         const content = getProductContent(product);
@@ -97,7 +95,6 @@ export default function Products() {
                                 onClick={() => navigate(`/productsdetails/${product.id}`)}
                             >
 
-                                {/* حاوية الصورة الاحترافية */}
                                 <div className="relative aspect-square rounded-[3.5rem] overflow-hidden bg-[#fff] border border-white shadow-sm transition-all duration-700 group-hover:shadow-2xl group-hover:-translate-y-3">
 
                                     <div className="absolute inset-0 p-10 flex items-center justify-center">
@@ -122,7 +119,6 @@ export default function Products() {
                                     </div>
                                 </div>
 
-                                {/* تفاصيل المنتج مع الزرار السهم الجديد */}
                                 <div className={`mt-8 px-2 flex flex-col flex-grow ${isRtl ? 'text-right' : 'text-left'}`}>
                                     <div className="flex justify-between items-center mb-3 gap-4">
                                         <div className="flex-grow">
@@ -131,7 +127,6 @@ export default function Products() {
                                             </h3>
                                         </div>
 
-                                        {/* الزرار السهم المدور الرايق */}
                                         <div className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-agri-green/30 flex items-center justify-center text-agri-green transition-all duration-700 group-hover:bg-agri-green group-hover:text-white group-hover:border-agri-green group-hover:rotate-[360deg] shadow-lg shadow-transparent group-hover:shadow-green-100">
                                             {isRtl ? <FaArrowLeft size={16} /> : <FaArrowRight size={16} />}
                                         </div>
@@ -147,6 +142,7 @@ export default function Products() {
                 </div>
             </div>
         </div>
+
     );
 }
 
@@ -166,11 +162,13 @@ function StatusBadge({ status, lang }: { status: string; lang: string }) {
     };
 
     return (
+
         <span className="bg-white/90 backdrop-blur-xl p-3 rounded-2xl shadow-lg text-gray-900 border border-white flex items-center justify-center gap-2 min-w-[45px]">
             {icons[status] || <FaLeaf size={12} />}
             <span className="text-[9px] font-black uppercase tracking-tighter">
                 {labels[lang]?.[status] || status}
             </span>
         </span>
+
     );
 }

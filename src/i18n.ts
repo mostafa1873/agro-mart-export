@@ -50,6 +50,10 @@ const resources = {
                     mainTitlePart1: "Some Of",
                     mainTitlePart2: "Our Operations"
                 },
+                badge: {
+                    subtitle: "Premium Quality",
+                    title: "Best Choice"
+                },
                 company: {
                     since: "From the Heart of Egypt",
                     title_part1: "Egyptian Roots,",
@@ -171,6 +175,10 @@ const resources = {
                     title2: "الأرض المصرية",
                     desc1: "شركة اجرو مارت للتصدير ليست مجرد شركة؛ بل هي جسر يربط بين التراث الزراعي الغني لمصر ومتطلبات السوق العالمية للجودة الفائقة.",
                     desc2: "تأسست شركتنا على مبادئ النزاهة والتميز، ونحن متخصصون في توريد أجود أنواع الفاكهة والخضروات مباشرة من مزارعنا المحلية."
+                },
+                badge: {
+                    subtitle: "جودة ممتازة",
+                    title: "الاختيار الأفضل"
                 },
                 portfolio: {
                     subTitle: "معايير عالمية",
@@ -305,6 +313,10 @@ const resources = {
                     bgText: "GALLERIA",
                     mainTitlePart1: "Uno sguardo alle",
                     mainTitlePart2: "nostre operazioni"
+                },
+                badge: {
+                    subtitle: "Qualità Premium",
+                    title: "La Scelta Migliore"
                 },
                 company: {
                     since: "Dal Cuore dell'Egitto",

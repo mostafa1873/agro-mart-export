@@ -78,19 +78,26 @@ export default function Footer() {
 
                     <div className="flex flex-col items-center lg:items-start">
                         <h4 className="text-gray-900 font-black mb-6 text-sm uppercase tracking-widest">{t('footer.contact_us')}</h4>
-                        <div className="space-y-5">
+                        <div className="space-y-5 w-full">
+
                             <div className="flex items-center gap-3 text-gray-500 group justify-center lg:justify-start">
-                                <div className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-agri-green group-hover:text-white transition-all">
+                                <div className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-agri-green group-hover:text-white transition-all shrink-0">
                                     <FaEnvelope size={12} />
                                 </div>
-                                <a href="mailto:info@zayatexport.com" className="text-sm font-bold hover:text-agri-green transition-colors">info@zayatexport.com</a>
+                                <a href="mailto:info@zayatexport.com" className="text-sm font-bold hover:text-agri-green transition-colors">
+                                    info@zayatexport.com
+                                </a>
                             </div>
-                            <div className="flex items-start gap-3 text-gray-500 group justify-center lg:justify-start">
-                                <div className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-agri-green group-hover:text-white transition-all mt-1">
+
+                            <div className="flex items-center gap-3 text-gray-500 group justify-center lg:justify-start">
+                                <div className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-agri-green group-hover:text-white transition-all shrink-0">
                                     <FaMapMarkerAlt size={12} />
                                 </div>
-                                <span className={`text-sm font-bold max-w-[180px] ${isRtl ? 'font-arabic' : ''}`}>{t('footer.info.address')}</span>
+                                <span className={`text-sm font-bold leading-none ${isRtl ? 'font-arabic' : ''}`}>
+                                    {t('footer.info.address')}
+                                </span>
                             </div>
+
                         </div>
                     </div>
 
@@ -114,17 +121,22 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className={`flex flex-col md:flex-row justify-between items-center gap-6 border-t border-gray-100 pt-8 ${isRtl ? 'md:flex-row-reverse' : ''}`}>
-                    <p className="text-gray-400 text-[11px] font-bold uppercase tracking-[0.15em] order-2 md:order-1">
-                        © {currentYear} AGRO MART. {t('footer.rights')}
+                <div className={`flex flex-col md:flex-row justify-between items-center gap-6 border-t border-gray-100 pt-8 mt-8`}>
+
+                    <p className={`text-gray-400 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.15em] order-2 ${isRtl ? 'md:order-2' : 'md:order-1'}`}>
+                        © {new Date().getFullYear()} AGRO MART CO. {t('footer.rights')}
                     </p>
 
-                    <div className={`flex items-center gap-3 text-[11px] font-black uppercase tracking-widest order-1 md:order-2 bg-gray-50/50 px-4 py-2 rounded-full border border-gray-100 transition-all hover:shadow-sm`}>
-                        <span className="text-gray-400 flex items-center gap-1.5">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-300">
+                    <div className={`flex items-center gap-3 bg-[#f8f9fa] px-4 py-2 rounded-xl border border-gray-100 group transition-all duration-300 hover:bg-white hover:shadow-sm`}>
+
+                        <div className="flex items-center text-gray-400 group-hover:text-agri-green transition-colors duration-300">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                 <polyline points="16 18 22 12 16 6"></polyline>
                                 <polyline points="8 6 2 12 8 18"></polyline>
                             </svg>
+                        </div>
+
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
                             {t('footer.left')}
                         </span>
 
@@ -132,10 +144,13 @@ export default function Footer() {
                             href="https://globalnexuseg.com"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="relative group text-gray-800 hover:text-agri-green transition-all duration-300"
+                            className="relative flex items-center"
                         >
-                            <span className="relative z-10">Global Nexus</span>
-                            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-agri-green transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                            <span className="text-[11px] md:text-[12px] font-extrabold text-black tracking-wider transition-all duration-300 group-hover:text-black">
+                                GLOBAL <span className="text-black">NEXUS</span>
+                            </span>
+
+                            <span className="absolute -bottom-1 right-0 w-0 h-[1.5px] bg-agri-green transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                         </a>
                     </div>
                 </div>
@@ -143,5 +158,6 @@ export default function Footer() {
             </div>
 
         </footer>
+        
     );
 }

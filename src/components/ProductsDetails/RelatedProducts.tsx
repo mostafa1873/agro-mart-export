@@ -19,9 +19,9 @@ export default function RelatedSlider({ currentProduct }: Props) {
         return itemStatus.some(s => currentStatus.includes(s)) && p.id !== currentProduct.id;
     });
 
-    const displayProducts = [...related, ...related, ...related];
+    const displayProducts = related.slice(0, 4);
 
-    if (related.length === 0) return null;
+    if (displayProducts.length === 0) return null;
 
     const handleProductClick = (e: React.MouseEvent, id: number) => {
         e.preventDefault();
@@ -31,89 +31,65 @@ export default function RelatedSlider({ currentProduct }: Props) {
     };
 
     return (
-        <section className="py-20 md:py-32 bg-[#fafafa] overflow-hidden border-t border-gray-100 relative">
-            
-            <div className="max-w-7xl mx-auto px-4 mb-16 relative">
-                <div className={`relative ${isRtl ? 'text-right' : 'text-left'}`}>
-                    <span className="absolute -top-8 left-0 right-0 text-[50px] md:text-[100px] font-black text-gray-200/30 uppercase select-none pointer-events-none tracking-tighter overflow-hidden whitespace-nowrap">
+        <section className="py-16 md:py-24 bg-[#fff] border-t rounded-4xl border-gray-100 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 relative">
+                
+                {/* Header Section */}
+                <div className={`mb-12 md:mb-16 relative ${isRtl ? 'text-right' : 'text-left'}`}>
+                    <span className="absolute -top-6 md:-top-10 left-0 right-0 text-[40px] md:text-[100px] font-black text-gray-900/5 uppercase select-none pointer-events-none tracking-tighter overflow-hidden whitespace-nowrap">
                         {isRtl ? 'منتجاتنا المختارة' : 'Our Selection'}
                     </span>
-                    
+
                     <div className="relative z-10">
-                        <span className="text-agri-green font-black text-xs md:text-sm uppercase tracking-[0.3em] mb-2 block">
+                        <span className="text-agri-green font-bold text-[10px] md:text-sm uppercase tracking-[0.2em] mb-2 block">
                             {isRtl ? 'اكتشف المزيد' : 'Explore More'}
                         </span>
-                        <h2 className={`text-3xl md:text-6xl font-black text-gray-900 tracking-tighter uppercase ${isRtl ? '' : 'italic'}`}>
-                            {isRtl ? 'منتجات مشابهة' : 'Related Products'}
+                        <h2 className="text-2xl md:text-4xl font-black text-gray-800 tracking-tight uppercase">
+                            {isRtl ? 'منتجات ذات صلة' : 'Related Products'}
                         </h2>
                     </div>
                 </div>
-            </div>
 
-            <div className="relative flex">
-                <div className="flex gap-6 md:gap-10 animate-infinite-scroll hover:[animation-play-state:paused] py-4">
+                <div className="flex flex-wrap justify-center gap-3 md:gap-8">
                     {displayProducts.map((item, index) => (
-                        <div 
+                        <div
                             key={`${item.id}-${index}`}
                             onClick={(e) => handleProductClick(e, item.id)}
-                            className="w-[260px] md:w-[380px] shrink-0 cursor-pointer group"
+                            className="group cursor-pointer w-[calc(50%-12px)] lg:w-[calc(25%-32px)] max-w-[320px]"
                         >
-                            <div className="bg-white rounded-[2rem] md:rounded-[3rem] p-5 md:p-8 shadow-[0_10px_50px_-20px_rgba(0,0,0,0.05)] group-hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-700 border border-gray-50 flex flex-col h-full relative overflow-hidden">
-                                
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-agri-green/5 rounded-bl-full translate-x-16 -translate-y-16 group-hover:translate-x-8 group-hover:-translate-y-8 transition-transform duration-700"></div>
+                            <div className="bg-white h-full rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 border border-gray-200 flex flex-col relative overflow-hidden group-hover:-translate-y-1">
 
-                                <div className="aspect-square rounded-[1.5rem] md:rounded-[2.5rem] bg-white mb-6 overflow-hidden flex items-center justify-center p-6 md:p-12 relative">
-                                    <img 
-                                        src={item.image.replace('..', '')} 
+                                {/* Background Decor */}
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#bef264]/40 to-transparent rounded-bl-[60px] -mr-6 -mt-6 transition-transform duration-500 group-hover:scale-125"></div>
+                                
+                                <div className="relative aspect-[1/1] rounded-[1rem] md:rounded-[1.5rem] bg-white mb-4 overflow-hidden flex items-center justify-center p-4">
+                                    <img
+                                        src={item.image.replace('..', '')}
                                         alt={item.name_en}
-                                        className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out"
+                                        className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500 ease-out"
                                     />
+
+                                    <div className="absolute bottom-2 right-2 md:bottom-3 md:right-3 w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center shadow-md text-agri-green opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                                        {isRtl ? <FaArrowLeft size={12} /> : <FaArrowRight size={12} />}
+                                    </div>
                                 </div>
 
-                                <h3 className="text-lg md:text-2xl font-black text-gray-900 uppercase leading-tight mb-4 line-clamp-2">
-                                    {lang === 'ar' ? item.name_ar : lang === 'it' ? item.name_it : item.name_en}
-                                </h3>
-                                
-                                <div className="flex items-center justify-between mt-auto pt-6 border-t border-gray-50">
-                                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                {/* Product Info */}
+                                <div className="flex flex-col gap-1 mt-auto">
+                                    <span className="text-[8px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider bg-gray-50 border border-gray-100 w-fit px-2 py-1 rounded-full">
                                         {item.category}
                                     </span>
-                                    
-                                    <div className="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-100 bg-gray-50 text-gray-900 group-hover:bg-agri-green group-hover:text-white group-hover:border-agri-green transition-all duration-500">
-                                        {isRtl ? (
-                                            <FaArrowLeft className="text-sm group-hover:-translate-x-1 transition-transform" />
-                                        ) : (
-                                            <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
-                                        )}
-                                    </div>
+
+                                    <h3 className="text-sm md:text-lg font-bold text-gray-800 leading-snug line-clamp-2 mt-1 group-hover:text-agri-green transition-colors">
+                                        {lang === 'ar' ? item.name_ar : lang === 'it' ? item.name_it : item.name_en}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
+
             </div>
-
-            <style>{`
-                @keyframes infinite-scroll {
-                    from { transform: translateX(0); }
-                    to { transform: translateX(${isRtl ? '33.33%' : '-33.33%'}); }
-                }
-                .animate-infinite-scroll {
-                    display: flex;
-                    width: max-content;
-                    animation: infinite-scroll 70s linear infinite;
-                }
-                
-                [dir='rtl'] .animate-infinite-scroll {
-                    animation-direction: normal;
-                }
-
-                @media (max-width: 768px) {
-                    .animate-infinite-scroll {
-                        animation: infinite-scroll 40s linear infinite;
-                    }
-                }
-            `}</style>
         </section>
     );
 }

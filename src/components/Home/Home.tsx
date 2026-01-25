@@ -25,7 +25,7 @@ export default function Home() {
                 <meta property="og:title" content={t('home.seo_title')} />
                 <meta property="og:description" content={t('home.seo_description')} />
                 <meta property="og:type" content="website" />
-                <link rel="canonical" href="https://zayatexport.com/" />
+                <link rel="canonical" href="https://agromartexport.com/" />
             </Helmet>
 
             {/* 1. Hero Section */}

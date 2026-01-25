@@ -53,7 +53,7 @@ export default function ProductsDetails() {
             variants: product.variants?.map(v => v.name_ar),
             specsTitle: 'المواصفات والأنواع المتاحة',
             backBtn: 'العودة للمنتجات',
-            contactBtn: 'تواصل معنا للاستفسار عن التصدير',
+            contactBtn: 'استعلم واطلب الآن',
             catLabel: 'التصنيف',
             procLabel: 'طريقة المعالجة',
             seoSuffix: 'تصدير من شركة الزيات'
@@ -64,7 +64,7 @@ export default function ProductsDetails() {
             variants: product.variants?.map(v => v.name_it),
             specsTitle: 'Specifiche e Varianti',
             backBtn: 'Torna ai prodotti',
-            contactBtn: 'Contattaci per l\'esportazione',
+            contactBtn: 'Richiedi e Ordina Ora',
             catLabel: 'Categoria',
             procLabel: 'Lavorazione',
             seoSuffix: 'Esportazione da Zayat'
@@ -75,7 +75,7 @@ export default function ProductsDetails() {
             variants: product.variants?.map(v => v.name_en),
             specsTitle: 'Specifications & Variants',
             backBtn: 'Back to Products',
-            contactBtn: 'Contact for Export Inquiry',
+            contactBtn: 'Inquire & Order Now',
             catLabel: 'Category',
             procLabel: 'Processing',
             seoSuffix: 'Export by Zayat'
@@ -117,11 +117,12 @@ export default function ProductsDetails() {
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-                    
+
                     {/* Image Gallery Section */}
-                    <div className="flex flex-col gap-4 md:gap-6 w-full max-w-xl mx-auto lg:mx-0">
-                        <div className="aspect-square rounded-[2rem] md:rounded-[3.5rem] bg-white overflow-hidden border-2 border-gray-50 flex items-center justify-center p-6 md:p-12 shadow-sm relative">
+                    <div className="flex flex-col gap-4 md:gap-6 w-full max-w-lg mx-auto lg:mx-0">
+                        <div className="aspect-square w-full rounded-[2rem] md:rounded-[3.5rem] bg-white overflow-hidden border-2 border-gray-50 flex items-center justify-center p-6 md:p-12 shadow-sm relative">
                             <img
+                                key={selectedImage}
                                 src={getImageUrl(selectedImage || product.image)}
                                 alt={content.name}
                                 className="max-w-full max-h-full object-contain transition-opacity duration-1000"
@@ -129,13 +130,13 @@ export default function ProductsDetails() {
                         </div>
 
                         {productGallery.length > 1 && (
-                            <div className="flex flex-wrap gap-2 md:gap-4 justify-center lg:justify-start">
+                            <div className="flex flex-wrap gap-2 md:gap-4 justify-center w-full">
                                 {productGallery.map((img: string, idx: number) => (
                                     <button
                                         key={idx}
                                         onClick={() => setSelectedImage(img)}
-                                        className={`w-12 h-12 md:w-20 md:h-20 rounded-xl md:rounded-2xl border-2 transition-all p-1.5 md:p-3 bg-white
-                                            ${selectedImage === img ? 'border-agri-green scale-105 shadow-md' : 'border-gray-50 opacity-60 hover:opacity-100'}`}
+                                        className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl border-2 transition-all p-1.5 md:p-2.5 bg-white
+                    ${selectedImage === img ? 'border-agri-green scale-105 shadow-md' : 'border-gray-50 opacity-60 hover:opacity-100'}`}
                                     >
                                         <img src={getImageUrl(img)} alt="thumbnail" className="w-full h-full object-contain" />
                                     </button>
@@ -192,7 +193,7 @@ export default function ProductsDetails() {
 
                         {/* Action Button */}
                         <div className="w-full sm:w-auto">
-                            <AgriButton 
+                            <AgriButton
                                 className='w-full sm:w-[320px] justify-center'
                                 to="/contact"
                                 text={content.contactBtn}

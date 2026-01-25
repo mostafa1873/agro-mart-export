@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import home1 from '../../assets/home-1.png';
+import home2 from '../../assets/home-2.png';
+import home3 from '../../assets/home-3.png';
+
 
 const WhyChooseUs = ({ t, isRtl }) => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -8,19 +12,19 @@ const WhyChooseUs = ({ t, isRtl }) => {
         {
             title: t('home.why.standards'),
             desc: t('home.why.standards_d'),
-            img: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000&auto=format&fit=crop",
+            img: home1,
             num: "01"
         },
         {
             title: t('home.why.direct'),
             desc: t('home.why.direct_d'),
-            img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1000&auto=format&fit=crop",
+            img: home2,
             num: "02"
         },
         {
             title: t('home.why.logistics'),
             desc: t('home.why.logistics_d'),
-            img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop",
+            img: home3,
             num: "03"
         }
     ];
@@ -28,7 +32,7 @@ const WhyChooseUs = ({ t, isRtl }) => {
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveIndex((prev) => (prev === features.length - 1 ? 0 : prev + 1));
-        }, 2000); 
+        }, 2000);
         return () => clearInterval(interval);
     }, [features.length]);
 

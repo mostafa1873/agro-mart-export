@@ -2,6 +2,7 @@
   "products": [
     {
       "id": 1,
+      "group_id": "artichoke",
       "category": "vegetable",
       "status": "fresh",
       "name_ar": "خرشوف",
@@ -10,8 +11,9 @@
       "image": "../image/artichoke.fresh.jpg",
       "gallery": [
         "../image/artichoke.fresh.jpg",
-        "../image/Artichoke IQF.png",
-        "../image/Artichoke In-brine.jpg"
+        "../image/fresh-2.jpeg",
+        "../image/arch-fresh.jpeg",
+        "../image/paces-iqf.jpeg"
       ],
       "description_ar": "مثالية لإضافتها إلى الحساء والصلصات وأطباق المعكرونة والمزيد، مما يجعل من السهل دمج هذه الخضار متعددة الاستخدامات في إبداعاتك الطهوية قلوب الخرشوف الطرية، مثالية للسلطات والبيتزا والأطباق الفاخرة. غنية بالألياف ومضادات الأكسدة.",
       "description_en": "Tender artichoke hearts, perfect for salads, pizzas, and gourmet dishes. Rich in fiber and antioxidants,perfect for adding to soups, sauces, pasta dishes, and more, making it easy to incorporate this versatile vegetable into your culinary creations.",
@@ -19,6 +21,7 @@
     },
     {
       "id": 2,
+      "group_id": "artichoke",
       "category": "vegetable",
       "status": "iqf",
       "name_ar": "خرشوف مجمد",
@@ -63,6 +66,7 @@
     },
     {
       "id": 3,
+      "group_id": "artichoke",
       "category": "vegetable",
       "status": "in_brine",
       "name_ar": "خرشوف محلول ملحي",
@@ -104,8 +108,7 @@
       "id": 4,
       "category": "vegetable",
       "status": [
-        "iqf",
-        "in_brine"
+        "iqf"
       ],
       "name_ar": "بروكلي",
       "name_en": "Broccoli",
@@ -141,8 +144,7 @@
       "id": 5,
       "category": "vegetable",
       "status": [
-        "iqf",
-        "in_brine"
+        "iqf"
       ],
       "name_ar": "قرنبيط",
       "name_en": "Cauliflower",
@@ -219,7 +221,29 @@
       ]
     },
     {
+      "id": 28,
+      "group_id": "Beans",
+      "category": "vegetable",
+      "status": [
+        "vegetable",
+        "fresh"
+      ],
+      "name_ar": "فاصوليا",
+      "name_en": "Beans",
+      "name_it": "Fagioli",
+      "image": "../image/newPro-5.jpeg",
+      "gallery": [
+        "../image/newPro-5.jpeg",
+        "../image/newPro-51.jpg",
+        "../image/newPro-52.jpeg"
+      ],
+      "description_ar": "مثالية لإضافتها إلى الحساء والصلصات وأطباق المعكرونة والمزيد، مما يجعل من السهل دمج هذه الخضار متعددة الاستخدامات في إبداعاتك الطهوية قلوب الخرشوف الطرية، مثالية للسلطات والبيتزا والأطباق الفاخرة. غنية بالألياف ومضادات الأكسدة.",
+      "description_en": "Tender artichoke hearts, perfect for salads, pizzas, and gourmet dishes. Rich in fiber and antioxidants,perfect for adding to soups, sauces, pasta dishes, and more, making it easy to incorporate this versatile vegetable into your culinary creations.",
+      "description_it": "Cuori di carciofo teneri, perfetti per insalate, pizze e piatti gourmet. Ricchi di fibre e antiossidanti, perfetto da aggiungere a zuppe, salse, piatti di pasta e altro ancora, rendendo facile incorporare questa versatile verdura nelle tue creazioni culinarie."
+    },
+    {
       "id": 7,
+      "group_id": "Beans",
       "category": "vegetable",
       "status": "iqf",
       "name_ar": "الفاصوليا",
@@ -252,7 +276,7 @@
       "category": "vegetable",
       "status": "iqf",
       "name_ar": "بازلاء خضراء",
-      "name_en": "Green Peas",
+      "name_en": "Peas",
       "name_it": "Piselli verdi",
       "image": "../image/product12.png",
       "gallery": [
@@ -519,6 +543,26 @@
       ]
     },
     {
+      "id": 29,
+      "category": "vegetable",
+      "status": [
+        "vegetable",
+        "fresh"
+      ],
+      "name_ar": "جزر",
+      "name_en": "Carrot ",
+      "name_it": "Carota",
+      "image": "../image/newPro-6.jfif",
+      "gallery": [
+        "../image/newPro-6.jfif",
+        "../image/newPro-61.jpg",
+        "../image/newPro-62.webp"
+      ],
+      "description_ar": "جزر طازج وفريش جزر طازج منتقى بعناية من أجود المزارع، يتميز بلونه البرتقالي الزاهي وقوامه المقرمش وطعمه الحلو الطبيعي. تم غسله وتنظيفه جيداً ليكون جاهزاً للاستخدام المباشر. يعد إضافة مثالية للسلطات، العصائر الصحية، أو كوجبة خفيفة ومغذية. غني جداً بالبيتا كاروتين وفيتامين A الضروري لصحة النظر والبشرة.",
+      "description_en": "Fresh Carrots Premium fresh carrots, carefully selected from the finest farms, featuring a vibrant orange color, crunchy texture, and natural sweet flavor. Thoroughly washed and cleaned for immediate use. They are a perfect addition to salads, healthy juices, or as a nutritious snack. Rich in beta-carotene and Vitamin A, essential for eye health and glowing skin.",
+      "description_it": "Carote Fresche Carote fresche di prima scelta, selezionate dai migliori raccolti, caratterizzate da un colore arancione vivace, una consistenza croccante e un sapore naturalmente dolce. Lavate e pulite accuratamente per un uso immediato. Sono l'aggiunta perfetta per insalate, succhi salutari o come spuntino nutriente. Ricche di beta-carotene e vitamina A, essenziali per la vista e la salute della pelle."
+    },
+    {
       "id": 18,
       "category": "vegetable",
       "status": [
@@ -537,6 +581,26 @@
       "description_ar": "جزر طازج تم تقشيره وتقطيعه وتجميده بسرعة للحفاظ على نكهته وقيمته الغذائية. يُستخدم في العديد من الوصفات مثل الشوربات واليخنات، ويتميز بمدة صلاحية طويلة وسهولة الاستخدام، حيث يمكن طهيه مباشرة من الفريزر. وهو مصدر جيد لفيتامين A والألياف.",
       "description_en": "Fresh carrots have been peeled, sliced, and quickly frozen to preserve their flavor and nutritional value. Used in many recipes, such as soups and stews, they have a long shelf life and are easy to use, as they can be cooked straight from the freezer. They are a good source of vitamin A and fiber.",
       "description_it": "Le carote fresche vengono pelate, affettate e rapidamente congelate per preservarne il sapore e il valore nutrizionale. Utilizzate in molte ricette, come zuppe e stufati, hanno una lunga conservazione e sono facili da usare, poiché possono essere cucinate direttamente dal congelatore. Sono una buona fonte di vitamina A e fibre."
+    },
+    {
+      "id": 30,
+      "category": "vegetable",
+      "status": [
+        "vegetable",
+        "fresh"
+      ],
+      "name_ar": "خس كابتشو",
+      "name_en": "Capcho lettuce ",
+      "name_it": "Lattuga Capcho",
+      "image": "../image/newPro-7.webp",
+      "gallery": [
+        "../image/newPro-7.webp",
+        "../image/newPro-71.jfif",
+        "../image/newPro-72.jpg"
+      ],
+      "description_ar": "خس كابوتشا طازج خس كابوتشا طازج يتميز بأوراقه المقرمشة والمنعشة، تم غسله وتجهيزه بعناية للحفاظ على جودته العالية. يُعد خياراً مثالياً للسلطات، السندوتشات، والمقبلات بفضل قوامه الفريد وطعمه الخفيف. يتميز بسهولة الاستخدام والتحضير السريع، كما أنه مصدر ممتاز للمياه والألياف الطبيعية، مما يجعله إضافة صحية ومنعشة لوجباتك اليومية.",
+      "description_en": "Fresh Iceberg Lettuce Fresh Iceberg lettuce, known for its crisp and refreshing leaves, carefully washed and prepared to maintain its high quality. It is an ideal choice for salads, sandwiches, and appetizers thanks to its unique texture and mild flavor. Highly convenient and quick to prepare, it is an excellent source of hydration and natural fiber, making it a healthy and refreshing addition to your daily meals.",
+      "description_it": "Lattuga Iceberg Fresca Lattuga Iceberg fresca, caratterizzata da foglie croccanti e rinfrescanti, accuratamente lavata e preparata per mantenerne l'alta qualità. È la scelta ideale per insalate, panini e antipasti grazie alla sua consistenza unica e al gusto delicato. Pronta all'uso e veloce da preparare, è un'ottima fonte di idratazione e fibre naturali, rendendola un'aggiunta sana e rinfrescante ai tuoi pasti quotidiani."
     },
     {
       "id": 19,
@@ -584,7 +648,6 @@
       "id": 20,
       "category": "vegetable",
       "status": [
-        "iqf",
         "in_brine"
       ],
       "name_ar": "فلفل شيري",
@@ -683,6 +746,86 @@
           "name_it": "equità"
         }
       ]
+    },
+    {
+      "id": 24,
+      "category": "fruit",
+      "status": [
+        "fruit",
+        "fresh"
+      ],
+      "name_ar": "ليمون اضاليا",
+      "name_en": "Adalia Lemon",
+      "name_it": "Adalia Limone",
+      "image": "../image/newPro-1.jfif",
+      "gallery": [
+        "../image/newPro-1.jfif",
+        "../image/newPro-11.jpg",
+        "../image/newPro-12.jpeg"
+      ],
+      "description_ar": "ليمون أضاليا طازج ليمون أضاليا فاخر يتميز بحجمه الكبير ولونه الأصفر الذهبي وقشرته الناعمة الغنية بالزيوت العطرية. يحتوي على كمية وفيرة من العصير المنعش بنكهة حمضية متوازنة، مما يجعله مثاليًا لتحضير العصائر، تتبيل المأكولات البحرية، وإضافة لمسة مميزة للحلويات. يعتبر مصدراً هائلاً لفيتامين C ومضادات الأكسدة التي تعزز المناعة.",
+      "description_en": "Fresh Adalia Lemon Premium Adalia lemons, known for their large size, vibrant golden yellow color, and smooth rind rich in aromatic oils. They provide an abundance of refreshing juice with a perfectly balanced acidic flavor, making them ideal for beverages, seasoning seafood, and enhancing desserts. A powerhouse of Vitamin C and antioxidants that boost the immune system.",
+      "description_it": "Limone Adalia Fresco Limoni Adalia di prima qualità, caratterizzati dalle grandi dimensioni, dal colore giallo intenso e dalla buccia liscia ricca di oli essenziali. Offrono un'abbondante quantità di succo rinfrescante con un sapore acido equilibrato, rendendoli ideali per spremute, condire frutti di mare e guarnire dolci. Sono una fonte eccezionale di vitamina C e antiossidanti che rafforzano il sistema immunitario."
+    },
+    {
+      "id": 25,
+      "category": "fruit",
+      "status": [
+        "fruit",
+        "fresh"
+      ],
+      "name_ar": "جوافة",
+      "name_en": "Guava",
+      "name_it": "Guaiava",
+      "image": "../image/newPro-2.jfif",
+      "gallery": [
+        "../image/newPro-2.jfif",
+        "../image/newPro-21.jpg",
+        "../image/newPro-22.jpg"
+      ],
+      "description_ar": "فاخرة جوافة طازجة منتقاة بعناية، تتميز برائحتها العطرية النفاذة وقوامها الكريمي وطعمها السكري اللذيذ. تعتبر من أغنى المصادر الطبيعية بفيتامين C (أضعاف ما يوجد في البرتقال)، مما يجعلها مثالية لتعزيز المناعة. يمكن تناولها طازجة، أو استخدامها لتحضير عصائر طبيعية منعشة غنية بالألياف والمعادن.",
+      "description_en": "Premium Fresh Guava Carefully selected fresh guava, known for its intense aromatic fragrance, creamy texture, and delicious sweet taste. It is one of the richest natural sources of Vitamin C (containing several times more than oranges), making it perfect for boosting immunity. Enjoy it fresh or use it to prepare refreshing natural juices rich in fiber and minerals.",
+      "description_it": "Guava Fresca Premium Guava fresca selezionata con cura, caratterizzata dal suo profumo intenso e aromatico, dalla consistenza cremosa e dal sapore dolce e delizioso. È una delle fonti naturali più ricche di vitamina C, rendendola ideale per rafforzare il sistema immunitario. Ottima da gustare fresca o per preparare succhi naturali rinfrescanti, ricchi di fibre e minerali."
+    },
+    {
+      "id": 26,
+      "category": "fruit",
+      "status": [
+        "fruit",
+        "fresh"
+      ],
+      "name_ar": "رمان",
+      "name_en": "Pomegranate",
+      "name_it": "melograno",
+      "image": "../image/newPro-3.jpg",
+      "gallery": [
+        "../image/newPro-3.jpg",
+        "../image/newPro-32.jfif",
+        "../image/newPro-31.webp"
+      ],
+      "description_ar": "رمان طازج فاخر رمان طازج من أجود المحاصيل، يتميز بحباته الحمراء الياقوتية الممتلئة بالعصير وطعمه الفريد الذي يجمع بين الحلاوة واللمحة الحمضية المنعشة. يعتبر الرمان كنزاً من مضادات الأكسدة والفيتامينات التي تعزز صحة القلب والدورة الدموية. مثالي للتناول المباشر، أو لإضافته للسلطات والمقبلات، أو لتحضير عصير الرمان الطبيعي المركز.",
+      "description_en": "Premium Fresh Pomegranate Premium fresh pomegranates, featuring deep ruby-red arils bursting with juice and a unique flavor that perfectly balances sweetness with a refreshing tartness. Known as a superfood, it is packed with antioxidants and vitamins that support heart health and circulation. Perfect for snacking, adding to salads and appetizers, or preparing pure, refreshing pomegranate juice.",
+      "description_it": "Melagrana Fresca Premium Melagrana fresca di qualità superiore, caratterizzata da chicchi color rosso rubino ricchi di succo e da un sapore unico che unisce dolcezza e una fresca nota acidula. Considerata un superfood, è un tesoro di antiossidanti e vitamine che favoriscono la salute del cuore e la circolazione. Ideale da gustare al naturale, da aggiungere a insalate e antipasti, o per preparare spremute fresche e genuine."
+    },
+    {
+      "id": 27,
+      "category": "vegetable",
+      "status": [
+        "vegetable",
+        "fresh"
+      ],
+      "name_ar": "بطاطا",
+      "name_en": "Potato",
+      "name_it": "Patata Dolce",
+      "image": "../image/newPro-4.webp",
+      "gallery": [
+        "../image/newPro-4.webp",
+        "../image/newPro-41.webp",
+        "../image/newPro-42.jpg"
+      ],
+      "description_ar": "بطاطا حلوة طازجة بطاطا حلوة منتقاة بعناية، تتميز بقوامها الناعم وطعمها العسلي الطبيعي الذي يزداد روعة عند الطهي. تعد خياراً مثالياً للشواء أو السلق أو كإضافة مبتكرة للحلويات والمخبوزات. وهي مصدر ممتاز للطاقة والبيتا كاروتين والألياف الغذائية، مما يجعلها وجبة مشبعة وصحية للكبار والأطفال على حد سواء.",
+      "description_en": "Fresh Sweet Potatoes Carefully selected sweet potatoes, known for their smooth texture and naturally honey-like flavor that intensifies when cooked. They are perfect for roasting, boiling, or as a creative addition to desserts and baked goods. An excellent source of energy, beta-carotene, and dietary fiber, they make a nutritious and satisfying meal for both adults and children.",
+      "description_it": "Patate Dolci Fresche Patate dolci selezionate con cura, caratterizzate da una consistenza morbida e un sapore naturalmente dolce che si esalta con la cottura. Sono ideali da fare al forno, bollite o come ingrediente creativo per dolci e prodotti da forno. Ottima fonte di energia, beta-carotene e fibre alimentari, rappresentano un pasto sano e nutriente per grandi e piccini."
     }
   ]
 }

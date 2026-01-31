@@ -58,7 +58,8 @@ export default function ProductsDetails() {
                 catLabel: 'التصنيف',
                 procLabel: 'طريقة المعالجة',
                 otherMethods: 'أشكال ومعالجات ومنتجات أخرى متوفرة',
-                seoSuffix: 'تصدير من شركة الزيات'
+                seoSuffix: 'تصدير من شركة الزيات',
+                main: "يتم التصنيع حسب الطلب وبأعلى معايير الجودة لضمان تلبية احتياجات عملائنا المتنوعة."
             },
             en: {
                 specsTitle: 'Specifications & Variants',
@@ -67,7 +68,8 @@ export default function ProductsDetails() {
                 catLabel: 'Category',
                 procLabel: 'Processing',
                 otherMethods: 'Other available products and processing forms',
-                seoSuffix: 'Export by Zayat'
+                seoSuffix: 'Export by Zayat',
+                main: "Made to order with the highest quality standards to ensure meeting our clients' diverse needs"
             },
             it: {
                 specsTitle: 'Specifiche e Varianti',
@@ -76,7 +78,8 @@ export default function ProductsDetails() {
                 catLabel: 'Categoria',
                 procLabel: 'Lavorazione',
                 otherMethods: 'Altre forme, trattamenti e prodotti disponibili',
-                seoSuffix: 'Esportazione da Zayat'
+                seoSuffix: 'Esportazione da Zayat',
+                main: "Realizzato su ordinazione con i più alti standard di qualità per garantire il soddisfacimento delle diverse esigenze dei nostri clienti"
             }
         };
 
@@ -106,7 +109,7 @@ export default function ProductsDetails() {
     const content = getContent();
 
     return (
-        <div className="pt-24 md:pt-32 pb-10 md:pb-20 bg-[#fcfcfc] min-h-screen" dir={isRtl ? 'rtl' : 'ltr'}>
+        <div className="pt-24 md:pt-30 pb-10 md:pb-20 bg-[#fcfcfc] min-h-screen" dir={isRtl ? 'rtl' : 'ltr'}>
             <Helmet>
                 <title>{`${content.name} | ${content.seoSuffix}`}</title>
                 <meta name="description" content={content.desc.substring(0, 160)} />
@@ -124,7 +127,7 @@ export default function ProductsDetails() {
 
                     {/* Gallery */}
                     <div className="flex flex-col gap-4 md:gap-6 w-full max-w-lg mx-auto lg:mx-0">
-                        <div className="aspect-square w-full rounded-[2rem] md:rounded-[3.5rem] bg-white overflow-hidden border-2 border-gray-50 flex items-center justify-center p-6 md:p-12 shadow-sm relative">
+                        <div className="aspect-square w-full rounded-[2rem] md:rounded-[3.5rem] bg-white overflow-hidden border-2 border-gray-50 flex items-center justify-center p-6 md:p-8 shadow-sm relative">
                             <img key={selectedImage} src={getImageUrl(selectedImage || product.image)} alt={content.name} className="max-w-full max-h-full object-contain transition-opacity duration-1000" />
                         </div>
                         {productGallery.length > 1 && (
@@ -148,6 +151,33 @@ export default function ProductsDetails() {
                             {content.desc}
                         </p>
 
+                        {/* Specs Card */}
+                        {content.variants && content.variants.length > 0 && (
+                            <div className="mt-2 p-6 md:p-8 bg-[#fcfcfc] rounded-[2rem] border border-gray-100 shadow-sm text-start">
+                                <h3 className="text-agri-green text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
+                                    <FaCheckCircle className="shrink-0" /> {content.specsTitle}
+                                </h3>
+                                <ul className="grid grid-cols-1 md:grid-cols-1 gap-y-3 gap-x-6">
+                                    {content.variants.map((variant, index) => (
+                                        <li key={index} className="flex items-start gap-3 text-gray-700 font-bold group">
+                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-agri-green shrink-0" />
+                                            <span className={`leading-tight ${isRtl ? 'text-base md:text-lg' : 'text-[11px] md:text-sm uppercase tracking-tight'}`}>{variant}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
+                        <div className="relative mt-8 md:mt-12 group">
+                            <div className="absolute -inset-2 bg-gradient-to-r from-gray-50 to-transparent rounded-[2.5rem] -z-10 opacity-50 transition-opacity group-hover:opacity-100" />
+
+                            <p className="relative text-zinc-800 text-[17px] md:text-2xl leading-[1.8] md:leading-[1.7] font-medium max-w-3xl mx-auto lg:mx-0 text-pretty border-l-4 lg:border-l-0 lg:border-r-4 border-agri-green/30 pl-4 lg:pl-0 lg:pr-6">
+                                <span className="block text-agri-green text-3xl mb-2 opacity-40 font-serif leading-none">“</span>
+                                {content.main}
+                                <span className="block text-agri-green text-3xl mt-2 opacity-40 font-serif leading-none text-end">”</span>
+                            </p>
+                        </div>
+
                         {/* Labels */}
                         <div className="grid grid-cols-2 gap-3 md:gap-4 mt-8 mb-8">
                             <div className="p-4 md:p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
@@ -162,22 +192,6 @@ export default function ProductsDetails() {
                             </div>
                         </div>
 
-                        {/* Specs Card */}
-                        {content.variants && content.variants.length > 0 && (
-                            <div className="mt-2 p-6 md:p-8 bg-[#fcfcfc] rounded-[2rem] border border-gray-100 shadow-sm text-start">
-                                <h3 className="text-agri-green text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
-                                    <FaCheckCircle className="shrink-0" /> {content.specsTitle}
-                                </h3>
-                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
-                                    {content.variants.map((variant, index) => (
-                                        <li key={index} className="flex items-start gap-3 text-gray-700 font-bold group">
-                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-agri-green shrink-0" />
-                                            <span className={`leading-tight ${isRtl ? 'text-base md:text-lg' : 'text-[11px] md:text-sm uppercase tracking-tight'}`}>{variant}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
 
                         {/* Ohter-Products */}
                         {otherVariants.length > 0 && (

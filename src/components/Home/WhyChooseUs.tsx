@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import home1 from '../../assets/home-1.png';
-import home2 from '../../assets/home-2.png';
-import home3 from '../../assets/home-3.png';
+import home1 from '../../assets/home-1.webp';
+import home2 from '../../assets/home-2.webp';
+import home3 from '../../assets/home-3.webp';
 
 
 const WhyChooseUs = ({ t, isRtl }) => {

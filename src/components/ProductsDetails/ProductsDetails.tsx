@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FaArrowLeft, FaCheckCircle, FaSnowflake, FaLeaf, FaWater } from 'react-icons/fa';
+import { FaArrowLeft, FaCheckCircle, FaSnowflake, FaLeaf, FaWater, FaTimes, FaImages } from 'react-icons/fa';
 import productsData from '../../data/products.json';
 import { Helmet } from 'react-helmet-async';
 import AgriButton from '../Ui/AgriButton';
@@ -10,7 +10,7 @@ import RelatedSlider from './RelatedProducts';
 export default function ProductsDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
 
     const lang = i18n.language;
     const isRtl = lang === 'ar';
@@ -22,30 +22,16 @@ export default function ProductsDetails() {
         p.name_en.split(' ')[0] === product?.name_en.split(' ')[0] && p.id !== product?.id
     );
 
-    const [selectedImage, setSelectedImage] = useState<string>('');
+    const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+    const [lightboxImg, setLightboxImg] = useState('');
+
     const productGallery = (product as any)?.gallery || (product ? [product.image] : []);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (product) {
-            setSelectedImage(product.image);
-        }
-    }, [id, product]);
+    }, [id]);
 
-    useEffect(() => {
-        if (productGallery.length > 1) {
-            const interval = setInterval(() => {
-                setSelectedImage((prevImage) => {
-                    const currentIndex = productGallery.indexOf(prevImage);
-                    const nextIndex = (currentIndex + 1) % productGallery.length;
-                    return productGallery[nextIndex];
-                });
-            }, 3000);
-            return () => clearInterval(interval);
-        }
-    }, [productGallery]);
-
-    if (!product) return <div className="h-screen flex items-center justify-center font-black">PRODUCT NOT FOUND</div>;
+    if (!product) return <div className="h-screen flex items-center justify-center font-black text-gray-400">PRODUCT NOT FOUND</div>;
 
     const getImageUrl = (path: string) => path.replace('..', '');
 
@@ -57,8 +43,9 @@ export default function ProductsDetails() {
                 contactBtn: 'استعلم واطلب الآن',
                 catLabel: 'التصنيف',
                 procLabel: 'طريقة المعالجة',
-                otherMethods: 'أشكال ومعالجات ومنتجات أخرى متوفرة',
-                seoSuffix: 'تصدير من شركة الزيات',
+                otherMethods: 'أشكال ومعالجات أخرى',
+                galleryTitle: 'معرض الصور',
+                seoSuffix: 'شركة الزيات',
                 main: "يتم التصنيع حسب الطلب وبأعلى معايير الجودة لضمان تلبية احتياجات عملائنا المتنوعة."
             },
             en: {
@@ -67,178 +54,179 @@ export default function ProductsDetails() {
                 contactBtn: 'Inquire & Order Now',
                 catLabel: 'Category',
                 procLabel: 'Processing',
-                otherMethods: 'Other available products and processing forms',
-                seoSuffix: 'Export by Zayat',
+                otherMethods: 'Other Processing Forms',
+                galleryTitle: 'Product Gallery',
+                seoSuffix: 'Zayat Co.',
                 main: "Made to order with the highest quality standards to ensure meeting our clients' diverse needs"
-            },
-            it: {
-                specsTitle: 'Specifiche e Varianti',
-                backBtn: 'Torna ai prodotti',
-                contactBtn: 'Richiedi e Ordina Ora',
-                catLabel: 'Categoria',
-                procLabel: 'Lavorazione',
-                otherMethods: 'Altre forme, trattamenti e prodotti disponibili',
-                seoSuffix: 'Esportazione da Zayat',
-                main: "Realizzato su ordinazione con i più alti standard di qualità per garantire il soddisfacimento delle diverse esigenze dei nostri clienti"
             }
         };
 
         const currentLabels = labels[lang] || labels['en'];
-
-        if (lang === 'ar') return { ...currentLabels, name: product.name_ar, desc: product.description_ar, variants: product.variants?.map(v => v.name_ar) };
-        if (lang === 'it') return { ...currentLabels, name: product.name_it, desc: product.description_it, variants: product.variants?.map(v => v.name_it) };
-        return { ...currentLabels, name: product.name_en, desc: product.description_en, variants: product.variants?.map(v => v.name_en) };
+        return {
+            ...currentLabels,
+            name: isRtl ? product.name_ar : product.name_en,
+            desc: isRtl ? product.description_ar : product.description_en,
+            variants: product.variants?.map(v => isRtl ? v.name_ar : v.name_en)
+        };
     };
 
     const translateTechnical = (val: string) => {
         const labels: any = {
             ar: { vegetable: 'خضروات', fruit: 'فواكه', iqf: 'مجمد IQF', fresh: 'طازج', in_brine: 'في محلول ملحي' },
-            it: { vegetable: 'Verdura', fruit: 'Frutta', iqf: 'IQF', fresh: 'Fresco', in_brine: 'In Salamoia' },
             en: { vegetable: 'Vegetable', fruit: 'Fruit', iqf: 'IQF', fresh: 'Fresh', in_brine: 'In Brine' }
         };
         return labels[lang]?.[val] || val;
     };
 
-    const getStatusIcon = (status: string) => {
-        if (status === 'iqf') return <FaSnowflake size={14} />;
-        if (status === 'fresh') return <FaLeaf size={14} />;
-        if (status === 'in_brine') return <FaWater size={14} />;
-        return <FaCheckCircle size={14} />;
+    const handleImageClick = (img: string) => {
+        setLightboxImg(img);
+        setIsLightboxOpen(true);
     };
 
     const content = getContent();
 
     return (
-        <div className="pt-24 md:pt-30 pb-10 md:pb-20 bg-[#fcfcfc] min-h-screen" dir={isRtl ? 'rtl' : 'ltr'}>
+        <div className="pt-28 md:pt-40 pb-10 md:pb-20 bg-[#fcfcfc] min-h-screen" dir={isRtl ? 'rtl' : 'ltr'}>
             <Helmet>
                 <title>{`${content.name} | ${content.seoSuffix}`}</title>
-                <meta name="description" content={content.desc.substring(0, 160)} />
             </Helmet>
 
+            {/* Lightbox Modal */}
+            {isLightboxOpen && (
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4" onClick={() => setIsLightboxOpen(false)}>
+                    <button className="absolute top-8 right-8 text-white text-3xl hover:scale-110 transition-transform"><FaTimes /></button>
+                    <img src={getImageUrl(lightboxImg)} alt="Zoomed" className="max-w-full max-h-[85vh] object-contain rounded-lg animate-in zoom-in duration-300" />
+                </div>
+            )}
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-6 md:mb-10">
-                    <button onClick={() => navigate('/products')} className="flex items-center gap-2 text-gray-400 hover:text-gray-900 transition-colors group w-fit">
+
+                {/* Back Button */}
+                <div className="mb-8 flex justify-center lg:justify-start">
+                    <button onClick={() => navigate('/products')} className="flex items-center gap-2 text-gray-400 hover:text-gray-900 transition-colors group">
                         <FaArrowLeft className={`transition-transform duration-300 ${isRtl ? 'rotate-180 group-hover:translate-x-1' : 'group-hover:-translate-x-1'}`} />
                         <span className="text-[10px] font-black uppercase tracking-[0.2em]">{content.backBtn}</span>
                     </button>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-                    {/* Gallery */}
-                    <div className="flex flex-col gap-4 md:gap-6 w-full max-w-lg mx-auto lg:mx-0">
-                        <div className="aspect-square w-full rounded-[2rem] md:rounded-[3.5rem] bg-white overflow-hidden border-2 border-gray-50 flex items-center justify-center p-6 md:p-8 shadow-sm relative">
-                            <img key={selectedImage} src={getImageUrl(selectedImage || product.image)} alt={content.name} className="max-w-full max-h-full object-contain transition-opacity duration-1000" />
+                    {/* Left Column: Image & Centered Gallery */}
+                    <div className="flex flex-col gap-8 w-full max-w-xl mx-auto lg:mx-0">
+
+                        {/* Main Image Card */}
+                        <div
+                            className="group aspect-square w-full rounded-[2.5rem] md:rounded-[4rem] bg-white overflow-hidden border border-gray-100 flex items-center justify-center shadow-md relative cursor-zoom-in"
+                            onClick={() => handleImageClick(product.image)}
+                        >
+                            <img
+                                src={getImageUrl(product.image)}
+                                alt={content.name}
+                                className="max-w-[80%] max-h-[80%] object-contain transition-transform duration-700 group-hover:scale-105"
+                            />
+                            <div className="absolute bottom-6 right-6 bg-white/80 backdrop-blur-sm p-3 rounded-full opacity-0 md:group-hover:opacity-100 transition-opacity">
+                                <FaImages className="text-agri-green" />
+                            </div>
                         </div>
-                        {productGallery.length > 1 && (
-                            <div className="flex flex-wrap gap-2 md:gap-4 justify-center w-full">
-                                {productGallery.map((img: string, idx: number) => (
-                                    <button key={idx} onClick={() => setSelectedImage(img)} className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl border-2 transition-all p-1.5 md:p-2.5 bg-white ${selectedImage === img ? 'border-agri-green scale-105 shadow-md' : 'border-gray-50 opacity-60 hover:opacity-100'}`}>
-                                        <img src={getImageUrl(img)} alt="thumbnail" className="w-full h-full object-contain" />
-                                    </button>
-                                ))}
+
+                        {/* Centered Thumbnails Gallery */}
+                        {productGallery.length > 0 && (
+                            <div className="space-y-6 w-full flex flex-col items-center">
+                                <div className="flex items-center justify-center gap-4 w-full">
+                                    <div className="w-8 h-[1px] bg-gray-200"></div>
+                                    <h5 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
+                                        {content.galleryTitle}
+                                    </h5>
+                                    <div className="w-8 h-[1px] bg-gray-200"></div>
+                                </div>
+
+                                <div className="flex flex-wrap justify-center gap-3 md:gap-4 w-full">
+                                    {productGallery.map((img: string, idx: number) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => handleImageClick(img)}
+                                            className="w-[20%] max-w-[70px] md:w-20 md:h-20 aspect-square rounded-2xl md:rounded-3xl border border-gray-100 bg-white p-1.5 md:p-2 hover:border-agri-green hover:shadow-lg transition-all duration-300 group overflow-hidden"
+                                        >
+                                            <img src={getImageUrl(img)} alt="thumb" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
                         )}
                     </div>
 
-                    {/* Info */}
+                    {/* Right Column: Info */}
                     <div className="flex flex-col text-center lg:text-start">
-                        <h1 className={`text-3xl md:text-5xl lg:text-7xl font-black text-gray-900 tracking-tighter uppercase mb-4 md:mb-6 leading-[1.1] ${isRtl ? '' : 'italic'}`}>
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-gray-900 tracking-tighter uppercase mb-6 leading-tight">
                             {content.name}
                         </h1>
 
-                        <p className="text-gray-500 text-sm md:text-lg leading-relaxed mb-8 md:mb-10 font-medium max-w-2xl mx-auto lg:mx-0">
+                        <div className="grid grid-cols-2 gap-3 md:gap-4 mb-8">
+                            <div className="p-4 md:p-6 rounded-[2rem] bg-white border border-gray-100 flex flex-col items-center lg:items-start">
+                                <span className="text-[9px] font-black text-agri-green uppercase tracking-widest mb-1">{content.catLabel}</span>
+                                <span className="text-sm md:text-lg font-black text-gray-900 uppercase italic">{translateTechnical(product.category)}</span>
+                            </div>
+                            <div className="p-4 md:p-6 rounded-[2rem] bg-white border border-gray-100 flex flex-col items-center lg:items-start">
+                                <span className="text-[9px] font-black text-agri-green uppercase tracking-widest mb-1">{content.procLabel}</span>
+                                <span className="text-sm md:text-lg font-black text-gray-900 uppercase italic">
+                                    {Array.isArray(product.status) ? product.status.map(s => translateTechnical(s)).join(' / ') : translateTechnical(product.status)}
+                                </span>
+                            </div>
+                        </div>
+
+                        <p className="text-gray-500 text-sm md:text-lg leading-relaxed mb-8 font-medium max-w-2xl mx-auto lg:mx-0">
                             {content.desc}
                         </p>
 
-                        {/* Specs Card */}
                         {content.variants && content.variants.length > 0 && (
-                            <div className="mt-2 p-6 md:p-8 bg-[#fcfcfc] rounded-[2rem] border border-gray-100 shadow-sm text-start">
-                                <h3 className="text-agri-green text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-4 flex items-center gap-2">
-                                    <FaCheckCircle className="shrink-0" /> {content.specsTitle}
+                            <div className="p-6 md:p-8 bg-zinc-50/50 rounded-[2.5rem] border border-gray-100 text-start">
+                                <h3 className="text-gray-900 text-[10px] font-black uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                                    <FaCheckCircle className="text-agri-green" /> {content.specsTitle}
                                 </h3>
-                                <ul className="grid grid-cols-1 md:grid-cols-1 gap-y-3 gap-x-6">
+                                <ul className="grid grid-cols-1 gap-3">
                                     {content.variants.map((variant, index) => (
-                                        <li key={index} className="flex items-start gap-3 text-gray-700 font-bold group">
-                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-agri-green shrink-0" />
-                                            <span className={`leading-tight ${isRtl ? 'text-base md:text-lg' : 'text-[11px] md:text-sm uppercase tracking-tight'}`}>{variant}</span>
+                                        <li key={index} className="flex items-start gap-3 text-gray-700 font-bold">
+                                            <span className="w-1.5 h-1.5 mt-2 rounded-full bg-agri-green/40 shrink-0" />
+                                            <span className="text-base">{variant}</span>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
                         )}
 
-                        <div className="relative mt-8 md:mt-12 group">
-                            <div className="absolute -inset-2 bg-gradient-to-r from-gray-50 to-transparent rounded-[2.5rem] -z-10 opacity-50 transition-opacity group-hover:opacity-100" />
-
-                            <p className="relative text-zinc-800 text-[17px] md:text-2xl leading-[1.8] md:leading-[1.7] font-medium max-w-3xl mx-auto lg:mx-0 text-pretty border-l-4 lg:border-l-0 lg:border-r-4 border-agri-green/30 pl-4 lg:pl-0 lg:pr-6">
-                                <span className="block text-agri-green text-3xl mb-2 opacity-40 font-serif leading-none">“</span>
-                                {content.main}
-                                <span className="block text-agri-green text-3xl mt-2 opacity-40 font-serif leading-none text-end">”</span>
+                        <div className="mt-10 mb-10">
+                            <p className="text-zinc-800 text-lg md:text-2xl font-medium italic border-l-4 border-agri-green/20 pl-6 py-2">
+                                "{content.main}"
                             </p>
                         </div>
 
-                        {/* Labels */}
-                        <div className="grid grid-cols-2 gap-3 md:gap-4 mt-8 mb-8">
-                            <div className="p-4 md:p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
-                                <span className="block text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">{content.catLabel}</span>
-                                <span className="text-sm md:text-base font-black text-gray-900 uppercase italic">{translateTechnical(product.category)}</span>
-                            </div>
-                            <div className="p-4 md:p-5 rounded-2xl bg-white border border-gray-100 shadow-sm">
-                                <span className="block text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">{content.procLabel}</span>
-                                <span className="text-sm md:text-base font-black text-gray-900 uppercase italic">
-                                    {Array.isArray(product.status) ? product.status.map(s => translateTechnical(s)).join(' / ') : translateTechnical(product.status)}
-                                </span>
-                            </div>
-                        </div>
-
-
-                        {/* Ohter-Products */}
-                        {otherVariants.length > 0 && (
-                            <div className="mb-5 mt-5">
-                                <div className="flex items-center justify-center gap-4 w-full mb-6">
-
-                                    <div className="h-[1px] bg-gradient-to-l from-agri-green/40 to-transparent flex-grow max-w-[50px] md:max-w-[100px]"></div>
-
-                                    <h4 className="text-[16px] md:text-[20px] font-black text-gray-900 uppercase tracking-[0.25em] text-center">
-                                        {content.otherMethods}
-                                    </h4>
-
-                                    <div className="h-[1px] bg-gradient-to-r from-agri-green/40 to-transparent flex-grow max-w-[50px] md:max-w-[100px]"></div>
-                                </div>
-                                <div className="flex flex-wrap gap-4 justify-center lg:justify-center">
-                                    {otherVariants.map((v: any) => (
-                                        <Link
-                                            key={v.id}
-                                            to={`/productsdetails/${v.id}`}
-                                            className="group/item relative w-24 h-24 md:w-32 md:h-32 rounded-[2rem] border border-gray-400 overflow-hidden transition-all duration-500 hover:border-agri-green hover:shadow-xl hover:-translate-y-2 flex items-center justify-center p-4"
-                                        >
-                                            <img
-                                                src={getImageUrl(v.image)}
-                                                className="w-full h-full object-contain transition-transform duration-500 group-hover/item:scale-110"
-                                                alt={v.name_en}
-                                            />
-                                            <div className="absolute inset-0 bg-agri-green/90 opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-white p-2 text-center backdrop-blur-sm">
-                                                <div className="mb-1">{getStatusIcon(v.status)}</div>
-                                                <span className="text-[8px] font-black uppercase tracking-tighter leading-tight">
-                                                    {translateTechnical(v.status)}
-                                                </span>
-                                            </div>
-                                        </Link>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        <div className="w-full sm:w-auto m-auto mt-8">
-                            <AgriButton className='w-full sm:w-[320px] justify-center' to="/contact" text={content.contactBtn} />
+                        <div className="mt-auto">
+                            <AgriButton className='w-full lg:w-[350px] justify-center py-5 text-lg rounded-full' text={content.contactBtn} to="/contact" />
                         </div>
 
                     </div>
                 </div>
             </div>
 
-            <div className="mt-16 md:mt-24">
+            {/* Other Variants */}
+            {otherVariants.length > 0 && (
+                <div className="max-w-7xl mx-auto px-4 mt-20 md:mt-32">
+                    <div className="flex items-center gap-4 mb-10 justify-center">
+                        <div className="h-[1px] bg-gray-200 flex-grow max-w-[50px]"></div>
+                        <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">{content.otherMethods}</h4>
+                        <div className="h-[1px] bg-gray-200 flex-grow max-w-[50px]"></div>
+                    </div>
+                    <div className="flex flex-wrap gap-3 justify-center">
+                        {otherVariants.map((v: any) => (
+                            <Link key={v.id} to={`/productsdetails/${v.id}`} className="w-20 h-20 md:w-36 md:h-36 rounded-3xl bg-white border border-gray-100 flex items-center justify-center p-4 hover:border-agri-green transition-all">
+                                <img src={getImageUrl(v.image)} className="w-full h-full object-contain" alt="variant" />
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            <div className="mt-24">
                 <RelatedSlider currentProduct={product} />
             </div>
         </div>

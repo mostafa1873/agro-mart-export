@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import aboutSection from '../../assets/about-section.jpg';
-import minImage from '../../assets/min-products.jpeg';
+import aboutSection from '../../assets/about-section.webp';
+import minImage from '../../assets/min-products.webp';
 import WhyChooseUs from './WhyChooseUs';
-import homeImg from '../../assets/home.jpeg';
-import iqfImg from '../../assets/iqf.jpeg';
-import freshImg from '../../assets/fresh.jpeg';
-import brineImg from '../../assets/in-brine.jpeg';
+import homeImg from '../../assets/home.webp';
+import iqfImg from '../../assets/iqf.webp';
+import freshImg from '../../assets/fresh.webp';
+import brineImg from '../../assets/in-brine.webp';
 
 
 

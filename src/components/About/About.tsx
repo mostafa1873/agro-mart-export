@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import heroImg from '../../assets/about-page.png';
+import heroImg from '../../assets/about-page.webp';
 import WorkGallerySlider from './WorkGallerySlider';
 import ProductSlider from './ProductSlider';
-import aboutImg from '../../assets/main-about.jpeg';
-import howImg1 from '../../assets/how-1.png';
-import howImg2 from '../../assets/how-2.png';
-import howImg3 from '../../assets/how-3.png';
+import aboutImg from '../../assets/main-about.webp';
+import howImg1 from '../../assets/how-1.webp';
+import howImg2 from '../../assets/how-2.webp';
+import howImg3 from '../../assets/how-3.webp';
 import productsData from '../../data/products.json';
 import { motion } from 'framer-motion';
 import AgriButton from '../Ui/AgriButton';
@@ -14,7 +14,7 @@ import work1 from '../../assets/work-1.jfif';
 import work2 from '../../assets/work-2.jfif';
 import work3 from '../../assets/work-3.jfif';
 import work4 from '../../assets/work-4.jfif';
-import worklast from '../../assets/work-end.jpeg';
+import worklast from '../../assets/work-end.webp';
 
 
 

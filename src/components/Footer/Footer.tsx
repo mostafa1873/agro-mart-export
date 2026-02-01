@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
-import LogoMain from '../../assets/logo-main.png';
+import LogoMain from '../../assets/logo-main.webp';
 
 export default function Footer() {
     const { t, i18n } = useTranslation();

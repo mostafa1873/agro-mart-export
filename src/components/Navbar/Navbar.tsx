@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import logoMain from '../../assets/logo-main.png';
+import logoMain from '../../assets/logo-main.webp';
 
-import GB from '../../assets/GB.png';
-import EG from '../../assets/EG.png';
-import IT from '../../assets/IT.png';
+import GB from '../../assets/GB.webp';
+import EG from '../../assets/EG.webp';
+import IT from '../../assets/IT.webp';
 
 export default function Navbar() {
     const { t, i18n } = useTranslation();

@@ -7,8 +7,21 @@ import { Helmet } from 'react-helmet-async';
 import AgriButton from '../Ui/AgriButton';
 import RelatedSlider from './RelatedProducts';
 
+// --- دالة تحويل الاسم لـ Slug لضمان التطابق مع الرابط ---
+const createSlug = (text: string) => {
+    if (!text) return '';
+    return text
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-')     // استبدال المسافات بشرطات
+        .replace(/[^\w-]+/g, '')  // حذف أي رموز غريبة
+        .replace(/--+/g, '-');    // التأكد من عدم وجود شرطات متكررة
+};
+
 export default function ProductsDetails() {
-    const { id } = useParams();
+    // التغيير هنا: useParams هتاخد 'id' بس هو فعلياً هيكون الـ slug اللي جاي من الرابط
+    const { id } = useParams(); 
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const { i18n } = useTranslation();
@@ -18,10 +31,19 @@ export default function ProductsDetails() {
     const baseUrl = 'https://zayatexport.com';
 
     const allProducts = productsData.products;
-    const product = allProducts.find(p => p.id === Number(id));
 
+    // --- التعديل الجوهري والمضمون: البحث مع توحيد حالة الأحرف وفك تشفير الرابط ---
+    const product = allProducts.find(p => {
+        const productSlug = createSlug(p.name_en);
+        const urlSlug = decodeURIComponent(id || '').toLowerCase();
+        return productSlug === urlSlug;
+    });
+
+    // البحث عن الأنواع الأخرى (Variants) بنفس المنطق القديم بس بأمان وتوحيد حالة الأحرف
     const otherVariants = allProducts.filter(p =>
-        p.name_en.split(' ')[0] === product?.name_en.split(' ')[0] && p.id !== product?.id
+        product && 
+        p.name_en.split(' ')[0].toLowerCase() === product.name_en.split(' ')[0].toLowerCase() && 
+        p.id !== product.id
     );
 
     useEffect(() => {
@@ -33,6 +55,7 @@ export default function ProductsDetails() {
             <div className="h-screen flex flex-col items-center justify-center font-black text-gray-400 bg-[#fcfcfc]">
                 <h1 className="text-4xl mb-4">404</h1>
                 <p className="uppercase tracking-widest">{isRtl ? 'المنتج غير موجود' : 'PRODUCT NOT FOUND'}</p>
+                <link rel="canonical" href={`${baseUrl}${pathname}`} />
                 <Link to={`/${lang}/products`} className="mt-6 text-agri-green underline">
                     {isRtl ? 'العودة للمنتجات' : 'Back to products'}
                 </Link>
@@ -67,7 +90,7 @@ export default function ProductsDetails() {
             it: {
                 specsTitle: 'Specifiche e Varianti',
                 backBtn: 'Torna ai prodotti',
-                contactBtn: 'Richiedi informazioni',
+                contactBtn: 'Richiedي informazioni',
                 catLabel: 'Categoria',
                 procLabel: 'Lavorazione',
                 otherMethods: 'Altre forme di lavorazione',
@@ -81,7 +104,7 @@ export default function ProductsDetails() {
             ...currentLabels,
             name: isRtl ? product.name_ar : lang === 'it' ? product.name_it : product.name_en,
             desc: isRtl ? product.description_ar : lang === 'it' ? product.description_it : product.description_en,
-            variants: product.variants?.map(v => isRtl ? v.name_ar : lang === 'it' ? v.name_it : v.name_en)
+            variants: product.variants?.map((v: any) => isRtl ? v.name_ar : lang === 'it' ? v.name_it : v.name_en)
         };
     };
 
@@ -123,7 +146,7 @@ export default function ProductsDetails() {
                         <FaCheckCircle className="text-agri-green" /> {content.specsTitle}
                     </h3>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {content.variants.map((variant, index) => (
+                        {content.variants.map((variant: any, index: number) => (
                             <li key={index} className="flex items-start gap-3 text-gray-700 font-bold">
                                 <span className="w-1.5 h-1.5 mt-2 rounded-full bg-agri-green shrink-0" />
                                 <span className="text-base">{variant}</span>
@@ -215,7 +238,7 @@ export default function ProductsDetails() {
                             <Link
                                 key={v.id}
                                 title={isRtl ? v.name_ar : v.name_en}
-                                to={`/${lang}/productsdetails/${v.id}`}
+                                to={`/${lang}/productsdetails/${createSlug(v.name_en)}`}
                                 className="w-24 h-24 md:w-40 md:h-40 rounded-[2rem] bg-white border border-gray-100 flex items-center justify-center p-6 hover:border-agri-green hover:shadow-xl transition-all duration-500 group"
                             >
                                 <img src={getImageUrl(v.image)} className="w-full h-full object-contain transition-transform group-hover:scale-110" alt="variant" />

@@ -62,6 +62,7 @@ const WhyChooseUs = ({ t, isRtl }) => {
                                 <img
                                     src={feat.img}
                                     alt={feat.title}
+                                    loading='lazy'
                                     className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] 
                                     ${isActive ? 'scale-110' : 'scale-100'}`}
                                 />

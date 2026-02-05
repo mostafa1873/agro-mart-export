@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import aboutSection from '../../assets/about-section.webp';
@@ -9,11 +9,12 @@ import iqfImg from '../../assets/iqf.webp';
 import freshImg from '../../assets/fresh.webp';
 import brineImg from '../../assets/in-brine.webp';
 
-
-
 export default function Home() {
     const { t, i18n } = useTranslation();
+    const { pathname } = useLocation();
     const isRtl = i18n.language === 'ar';
+    const lang = i18n.language;
+    const baseUrl = "https://agromartexport.com";
 
     return (
         <div className="overflow-hidden">
@@ -25,7 +26,14 @@ export default function Home() {
                 <meta property="og:title" content={t('home.seo_title')} />
                 <meta property="og:description" content={t('home.seo_description')} />
                 <meta property="og:type" content="website" />
-                <link rel="canonical" href="https://agromartexport.com/" />
+                <meta property="og:url" content={`${baseUrl}${pathname}`} />
+
+                {/* التعديلات الجديدة للـ SEO الدولي */}
+                <link rel="canonical" href={`${baseUrl}${pathname}`} />
+                <link rel="alternate" href={`${baseUrl}/en`} hreflang="en" />
+                <link rel="alternate" href={`${baseUrl}/ar`} hreflang="ar" />
+                <link rel="alternate" href={`${baseUrl}/it`} hreflang="it" />
+                <link rel="alternate" href={`${baseUrl}/en`} hreflang="x-default" />
             </Helmet>
 
             {/* 1. Hero Section */}
@@ -42,6 +50,14 @@ export default function Home() {
                             </h2>
                         </div>
                     </div>
+
+                    <div
+                        className="absolute inset-0 opacity-[0.4]"
+                        style={{
+                            backgroundImage: 'radial-gradient(#16a34a 0.7px, transparent 0.7px)',
+                            backgroundSize: '24px 24px'
+                        }}
+                    ></div>
 
                     {[
                         { pos: "top-[10%] left-[5%]", rot: "rotate-45" },
@@ -69,7 +85,7 @@ export default function Home() {
                                 <span className="inline-block mt-1 lg:mt-0">{t('home.hero_title3')}</span>
                             </h1>
 
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-agri-green/10 text-agri-green rounded-full">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 my-2 m-0 bg-agri-green/10 text-agri-green rounded-full">
                                 <span className="text-[10px] lg:text-xs font-black uppercase tracking-widest">{t('home.global_partner')}</span>
                             </div>
 
@@ -86,7 +102,7 @@ export default function Home() {
                             <div className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full sm:w-auto pt-2`}>
 
                                 <Link
-                                    to="/products"
+                                    to={`/${lang}/products`}
                                     className="w-full sm:w-auto bg-green-700 text-white 
                         px-8 py-3.5 lg:px-10 lg:py-4 
                         rounded-full font-bold 
@@ -97,7 +113,7 @@ export default function Home() {
                                 </Link>
 
                                 <Link
-                                    to="/contact"
+                                    to={`/${lang}/contact`}
                                     className={`group relative flex items-center justify-between sm:justify-start gap-4 py-1.5 font-bold text-gray-900 border-2 border-gray-100 rounded-full hover:border-agri-green/30 hover:bg-agri-green/5 transition-all duration-500 shadow-sm hover:shadow-md w-full sm:w-auto
                         ${isRtl ? 'pr-6 pl-1.5' : 'pl-6 pr-1.5'}`}
                                 >
@@ -161,6 +177,7 @@ export default function Home() {
                                     src={aboutSection}
                                     alt="Quality Control"
                                     className="w-full h-full object-cover"
+                                    loading='lazy'
                                 />
                             </div>
                             <div className={`absolute -bottom-8 ${isRtl ? '-left-8' : '-right-8'} w-32 h-32 lg:w-64 lg:h-64 rounded-[1.5rem] lg:rounded-[2rem] border-[8px] lg:border-[12px] border-white overflow-hidden shadow-2xl z-30 hidden md:block`}>
@@ -172,7 +189,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className={`flex-1 flex flex-col space-y-6 lg:space-y-8 text-center lg:text-${isRtl ? 'right' : 'left'} items-center lg:items-${isRtl ? 'end' : 'start'} w-full`}>
+                        <div className="flex-1 flex flex-col space-y-6 lg:space-y-8 text-center lg:text-start items-center lg:items-start w-full">
 
                             <div className="flex items-center gap-3 justify-center lg:justify-start">
                                 <span className="w-8 lg:w-12 h-[2px] bg-agri-green"></span>
@@ -193,18 +210,17 @@ export default function Home() {
                                 <p className="text-base lg:text-xl text-gray-500 leading-relaxed font-medium max-w-lg">
                                     {t('home.about.description_brief')}
                                 </p>
-                                <p className={`text-sm lg:text-lg text-gray-400 italic ${isRtl ? 'lg:border-r-4' : 'lg:border-l-4'} border-agri-green/30 px-4 py-1 text-center lg:text-left`}>
+                                <p className="text-sm lg:text-lg text-gray-400 italic border-agri-green/30 px-4 py-1 text-center lg:text-start border-s-4">
                                     {t('home.about.who_we_are_desc')}
                                 </p>
                             </div>
 
                             <div className="pt-4 w-full flex justify-center lg:justify-start">
                                 <Link
-                                    to="/about"
-                                    className={`group relative flex items-center gap-4 lg:gap-6 p-1.5 transition-all duration-500 border border-gray-100 hover:border-agri-green/20 bg-gray-50 hover:bg-white rounded-full shadow-sm hover:shadow-xl
-    ${isRtl ? 'flex-row pr-6 lg:pr-8 pl-1.5' : 'flex-row pl-6 lg:pl-8 pr-1.5'}`}
+                                    to={`/${lang}/about`}
+                                    className="group relative flex items-center gap-4 lg:gap-6 p-1.5 transition-all duration-500 border border-gray-100 hover:border-agri-green/20 bg-gray-50 hover:bg-white rounded-full shadow-sm hover:shadow-xl ps-6 lg:ps-8 pe-1.5"
                                 >
-                                    <div className={`flex-1 flex flex-col ${isRtl ? 'text-right items-end' : 'text-left items-start'} justify-center`}>
+                                    <div className="flex-1 flex flex-col text-start items-start justify-center">
                                         <span className="text-[10px] lg:text-xs font-black uppercase tracking-widest text-agri-green opacity-70">
                                             {t('home.about.ready_to_start')}
                                         </span>
@@ -213,20 +229,10 @@ export default function Home() {
                                         </span>
                                     </div>
 
-                                    <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-full bg-agri-green text-white flex items-center justify-center transition-all duration-700 ease-in-out shadow-md shrink-0
-    ${isRtl
-                                            ? 'rotate-180 group-hover:rotate-[540deg]' // عربي: يبدأ 180 ويلف 360 زيادة يوصل 540 (فيفضل باصص شمال)
-                                            : 'group-hover:rotate-[360deg]'             // انجليزي: يلف لفة عادية
-                                        }`}>
+                                    <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-full bg-agri-green text-white flex items-center justify-center transition-all duration-700 ease-in-out shadow-md shrink-0 rtl:rotate-180 group-hover:rotate-[360deg] rtl:group-hover:rotate-[-180deg]`}>
                                         <svg
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            strokeWidth="3"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
+                                            width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
                                             className="lg:w-6 lg:h-6"
                                         >
                                             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -234,7 +240,7 @@ export default function Home() {
                                         </svg>
                                     </div>
 
-                                    <div className={`absolute hidden lg:block opacity-0 group-hover:opacity-100 transition-opacity ${isRtl ? 'right-4' : 'left-4'}`}>
+                                    <div className="absolute hidden lg:block opacity-0 group-hover:opacity-100 transition-opacity start-4">
                                         <div className="w-2 h-2 rounded-full bg-agri-orange animate-ping"></div>
                                     </div>
                                 </Link>
@@ -245,7 +251,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* 3. Products */}
+            {/* 3. Process */}
             <section className="py-16 lg:py-32 bg-gray-50/50">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
@@ -268,7 +274,7 @@ export default function Home() {
                         </div>
 
                         <Link
-                            to="/products"
+                            to={`/${lang}/products`}
                             className="hidden md:flex group items-center gap-4 bg-white px-8 py-4 rounded-full shadow-sm border border-gray-100 font-bold hover:shadow-md hover:border-agri-green/20 transition-all active:scale-95"
                         >
                             <span className="text-gray-900">{t('home.harvest.view_all')}</span>
@@ -309,6 +315,7 @@ export default function Home() {
                                         src={item.img}
                                         className="w-full h-full object-cover transform group-hover:scale-110 group-active:scale-110 transition-transform duration-[1.5s]"
                                         alt={item.name}
+                                        loading='lazy'
                                     />
 
                                     <div className="absolute top-6 end-6">
@@ -319,7 +326,7 @@ export default function Home() {
 
                                     <div className="absolute inset-0 bg-black/20 lg:opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity flex items-center justify-center">
                                         <Link
-                                            to={`/products?filter=${item.filterTag}`}
+                                            to={`/${lang}/products?filter=${item.filterTag}`}
                                             className="bg-white text-gray-900 px-8 py-3 rounded-full font-bold transform lg:translate-y-4 group-hover:translate-y-0 group-active:translate-y-0 transition-all hover:bg-agri-green hover:text-white"
                                         >
                                             {isRtl ? 'عرض المنتجات' : 'View Products'}
@@ -340,7 +347,7 @@ export default function Home() {
 
                     <div className="mt-16 flex justify-center md:hidden">
                         <Link
-                            to="/products"
+                            to={`/${lang}/products`}
                             className="group flex items-center gap-4 bg-white px-10 py-4 rounded-full shadow-lg border border-gray-100 font-bold active:scale-95 transition-all"
                         >
                             <span className="text-gray-900">{t('home.harvest.view_all')}</span>
@@ -382,7 +389,7 @@ export default function Home() {
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
                                 <Link
-                                    to="/contact"
+                                    to={`/${lang}/contact`}
                                     className="inline-flex items-center justify-center px-8 md:px-10 py-4 bg-[#4c7c4c] hover:bg-[#5a8d5a] text-white text-base md:text-lg font-bold rounded-full transition-all duration-300 w-full sm:w-auto gap-3 group shadow-xl hover:scale-105 active:scale-95"
                                 >
                                     <span>{t('home.cta.btn')}</span>
@@ -402,7 +409,9 @@ export default function Home() {
                                     </svg>
                                 </Link>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </section>

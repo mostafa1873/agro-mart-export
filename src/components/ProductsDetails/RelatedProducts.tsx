@@ -26,7 +26,9 @@ export default function RelatedSlider({ currentProduct }: Props) {
     const handleProductClick = (e: React.MouseEvent, id: number) => {
         e.preventDefault();
         e.stopPropagation();
-        navigate(`/productsdetails/${id}`);
+        
+        navigate(`/${lang}/productsdetails/${id}`);
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -77,7 +79,8 @@ export default function RelatedSlider({ currentProduct }: Props) {
                                 {/* Product Info */}
                                 <div className="flex flex-col gap-1 mt-auto">
                                     <span className="text-[8px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider bg-gray-50 border border-gray-100 w-fit px-2 py-1 rounded-full">
-                                        {item.category}
+                                        {/* ترجمة القسم إذا لزم الأمر */}
+                                        {lang === 'ar' ? (item.category === 'vegetable' ? 'خضروات' : 'فواكه') : item.category}
                                     </span>
 
                                     <h3 className="text-sm md:text-lg font-bold text-gray-800 leading-snug line-clamp-2 mt-1 group-hover:text-agri-green transition-colors">

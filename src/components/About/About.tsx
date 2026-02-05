@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
 import heroImg from '../../assets/about-page.webp';
 import WorkGallerySlider from './WorkGallerySlider';
 import ProductSlider from './ProductSlider';
@@ -53,17 +54,37 @@ const myWorkImages = [
 
 export default function About() {
     const { t, i18n } = useTranslation();
+    const { pathname } = useLocation(); // أضفنا دي عشان نجيب المسار الحالي
     const isRtl = i18n.language === 'ar';
+    const baseUrl = 'https://zayatexport.com'; // الأساس بتاعك
 
     return (
         <div className="pt-24 lg:pt-24 pb-12 lg:pb-20 overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
 
             <Helmet>
+                {/* العناوين الأساسية */}
                 <title>{t('about.hero.seo_title')}</title>
                 <meta name="description" content={t('about.hero.seo_description')} />
+                <link rel="canonical" href={`${baseUrl}${pathname}`} />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`${baseUrl}${pathname}`} />
                 <meta property="og:title" content={t('about.hero.seo_title')} />
                 <meta property="og:description" content={t('about.hero.seo_description')} />
-                <link rel="canonical" href="https://zayatexport.com/about" />
+                <meta property="og:image" content={heroImg} />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={t('about.hero.seo_title')} />
+                <meta name="twitter:description" content={t('about.hero.seo_description')} />
+                <meta name="twitter:image" content={heroImg} />
+
+                <meta name="keywords" content="Agro Mart Export, Egyptian Agriculture, Exporting fruits, About Zayat Export, شركة الزيات للتصدير, الحاصلات الزراعية المصرية, عن شركة الزيات" />
+
+                {/* دعم اللغات المختلقة لمحركات البحث - التعديل الجديد */}
+                <link rel="alternate" href={`${baseUrl}/ar/about`} hreflang="ar" />
+                <link rel="alternate" href={`${baseUrl}/en/about`} hreflang="en" />
+                <link rel="alternate" href={`${baseUrl}/it/about`} hreflang="it" />
+                <link rel="alternate" href={`${baseUrl}/en/about`} hreflang="x-default" />
             </Helmet>
 
             <div className="w-full mx-auto">
@@ -128,21 +149,21 @@ export default function About() {
 
                     <style dangerouslySetInnerHTML={{
                         __html: `
-        @keyframes marqueeLTR {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        @keyframes marqueeRTL {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(50%); }
-        }
-        .animate-marquee-ltr {
-            animation: marqueeLTR 25s linear infinite;
-        }
-        .animate-marquee-rtl {
-            animation: marqueeRTL 25s linear infinite;
-        }
-    `}} />
+                               @keyframes marqueeLTR {
+                                   0% { transform: translateX(0); }
+                                   100% { transform: translateX(-50%); }
+                               }
+                               @keyframes marqueeRTL {
+                                   0% { transform: translateX(0); }
+                                   100% { transform: translateX(50%); }
+                               }
+                               .animate-marquee-ltr {
+                                  animation: marqueeLTR 25s linear infinite;
+                               }
+                               .animate-marquee-rtl {
+                                   animation: marqueeRTL 25s linear infinite;
+                               }
+                           `}} />
                 </div>
 
                 {/* 2. About */}
@@ -156,6 +177,7 @@ export default function About() {
                                 <div className="relative group aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-gray-100 shadow-2xl shadow-gray-200/50">
                                     <img
                                         src={aboutImg}
+                                        loading='lazy'
                                         alt="Company Presentation"
                                         className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110"
                                     />
@@ -199,7 +221,7 @@ export default function About() {
                                         </span>
                                     </h2>
 
-                                    <p className="text-shadow-black text-base lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
+                                    <p className="text-shadow-black text-base lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light text-gray-600">
                                         {t('about.company.mission')}
                                     </p>
                                 </div>
@@ -265,6 +287,7 @@ export default function About() {
                                     <img
                                         src={item.img}
                                         alt={item.title}
+                                        loading='lazy'
                                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-focus:scale-110 group-active:scale-110 opacity-60 group-hover:opacity-40 group-focus:opacity-40 group-active:opacity-40"
                                     />
 

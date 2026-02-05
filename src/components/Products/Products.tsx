@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom'; // أضفنا useLocation
 import { useTranslation } from 'react-i18next';
 import productsData from '../../data/products.json';
 import { FaSnowflake, FaLeaf, FaWater, FaArrowRight, FaArrowLeft } from 'react-icons/fa';
@@ -11,9 +11,13 @@ export default function Products() {
 
     const [filter, setFilter] = useState(filterQuery || 'all');
     const navigate = useNavigate();
+    const { pathname } = useLocation(); 
     const { t, i18n } = useTranslation();
     const isRtl = i18n.language === 'ar';
     const lang = i18n.language;
+    const baseUrl = 'https://zayatexport.com';
+
+    const langPrefix = `/${lang}`;
 
     useEffect(() => {
         if (filterQuery) {
@@ -51,7 +55,19 @@ export default function Products() {
             <Helmet>
                 <title>{t('products.seo_title')}</title>
                 <meta name="description" content={t('products.seo_description')} />
-                <link rel="canonical" href="https://zayatexport.com/products" />
+                <link rel="canonical" href={`${baseUrl}${pathname}`} />
+                
+                {/* إعدادات Open Graph */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`${baseUrl}${pathname}`} />
+                <meta property="og:title" content={t('products.seo_title')} />
+                <meta property="og:description" content={t('products.seo_description')} />
+                
+                {/* الربط بين اللغات لمحركات البحث */}
+                <link rel="alternate" href={`${baseUrl}/ar/products`} hreflang="ar" />
+                <link rel="alternate" href={`${baseUrl}/en/products`} hreflang="en" />
+                <link rel="alternate" href={`${baseUrl}/it/products`} hreflang="it" />
+                <link rel="alternate" href={`${baseUrl}/en/products`} hreflang="x-default" />
             </Helmet>
 
             <div className="max-w-7xl mx-auto px-6">
@@ -88,7 +104,7 @@ export default function Products() {
                             <div
                                 key={product.id}
                                 className="group flex flex-col cursor-pointer"
-                                onClick={() => navigate(`/productsdetails/${product.id}`)}
+                                onClick={() => navigate(`${langPrefix}/productsdetails/${product.name_en}`)}
                             >
                                 <div className="relative aspect-square rounded-[3.5rem] overflow-hidden bg-[#fff] border border-white shadow-sm transition-all duration-700 group-hover:shadow-2xl group-hover:-translate-y-3">
                                     <div className="absolute inset-0 p-10 flex items-center justify-center">
@@ -117,7 +133,7 @@ export default function Products() {
                                             {isRtl ? <FaArrowLeft size={16} /> : <FaArrowRight size={16} />}
                                         </div>
                                     </div>
-                                    <p className="text-gray-400 text-sm mb-4 line-clamp-2 font-medium tracking-tight leading-relaxed">
+                                    <p className="text-gray-400 text-sm mb-4 line-clamp-2 font-medium tracking-tight leading-relaxed text-gray-600">
                                         {content.desc}
                                     </p>
                                 </div>

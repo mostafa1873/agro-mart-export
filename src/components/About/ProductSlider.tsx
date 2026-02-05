@@ -63,6 +63,7 @@ const ProductSlider = ({ products, t, isRtl }) => {
                                     <div className="absolute inset-2 lg:inset-3 rounded-full overflow-hidden bg-white shadow-sm">
                                         <img
                                             src={product.image}
+                                            loading='lazy'
                                             alt={product.name_en}
                                             className="w-full h-full object-contain p-4 lg:p-6 group-hover:scale-110 transition-transform duration-700"
                                         />

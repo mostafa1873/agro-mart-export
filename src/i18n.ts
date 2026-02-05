@@ -4,6 +4,7 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
     en: {
         translation: {
+            loading: { "slogan": "Exporting Quality" },
             nav: {
                 home: "Home",
                 about: "About Us",
@@ -28,22 +29,14 @@ const resources = {
                 hero_desc: "Agro Mart Export delivers premium agricultural products with a commitment to quality.",
                 btn_products: "Explore Products",
                 btn_contact: "Contact Us",
-                about: { who_we_are: "Fresh, Premium, Global That’s Agro Mart.", title_main: "Setting New Standards for Agricultural Export Quality", description_brief: "At Agro Mart, we build a bridge of trust between Egyptian farms and global markets. Our years of expertise make us the first choice for major supply chains in Europe and the Americas, with total commitment to international certifications.", who_we_are_desc: "From the Heart of Our Farms to Your Global Table", quote: "We don't just export products; we deliver the excellence of Egyptian soil to your global table.", ready_to_start: "Meet Agro Mart", btn_about: "Discover Our Story" },
+                about: { who_we_are: "Your strategic partner for supplying the finest Egyptian crops with European standards.", title_main: "Setting New Standards for Agricultural Export Quality", description_brief: "At Agro Mart, we don't just export crops; we export excellence. With a sophisticated logistics network and a deep understanding of market requirements, we ensure our products reach you from Egyptian farms at peak freshness. We adhere to the strictest international standards (Global GAP / ISO) to always be your first and most trusted choice.", who_we_are_desc: "From the heart of our farms to your global tables.", quote: "We don't just export products; we deliver the excellence of Egyptian soil to your global tables.", ready_to_start: "Get to know Agro Mart", btn_about: "Discover our story" },
                 harvest: { badge: "High-Quality Crops", title1: "Our", title2: "Seasonal Harvest", desc: "Carefully selected quality from Egyptian farms.", view_all: "View All Products" },
                 products: { onion: "IQF Products", orange: "Fresh Products", strawberry: "In Brine Products", veg: "IQF", fruit: "FRESH", berry: "IN BRINE", desc: "Exporting with Global Quality Standards" },
                 why: { title1: "Why Partners Trust", title2: "AGRO MART", title3: "We stand out for precision, speed, and safety in every shipment.", standards: "Global Standards", standards_d: "We strictly follow Global G.A.P and international regulations.", direct: "Direct From Farms", direct_d: "Eliminating middlemen to ensure the best price and freshness.", logistics: "Fast Logistics", logistics_d: "Temperature-controlled shipping to preserve maximum quality." },
                 cta: { title: "Ready to start a global partnership?", desc: "Request a customized quote for your market needs today.", btn: "Send Inquiry Now" }
             },
             about: {
-                hero: {
-                    seo_title: "About Us | Agro Mart Export Story & Values",
-                    seo_description: "Discover Agro Mart Export's journey in bringing premium Egyptian produce to the world. Our commitment to quality, sustainability, and global standards.",
-                    badge: "Our Story",
-                    title1: "Roots in",
-                    title2: "Egyptian Soil",
-                    desc1: "Agro Mart Export is more than just a company; it is a bridge connecting Egypt’s rich agricultural heritage with the global market's demand for premium quality.",
-                    desc2: "Founded on principles of integrity and excellence, we specialize in sourcing the finest fruits and vegetables directly from our local farms."
-                },
+                hero: { seo_title: "About Us | Agro Mart Agricultural Export Company", seo_description: "Learn about Agro Mart's journey in exporting the finest Egyptian crops to the world. We are committed to the highest standards of quality and sustainability in farming and supply.", badge: "Our Story", title1: "From Our Farms", title2: "To The World", desc1: "Agro Mart Export is not just a company; it is a bridge connecting Egypt's rich agricultural heritage with the global market's demand for premium quality.", desc2: "Our local market expertise and ability to meet global requirements make us the ideal partner for your business growth." },
                 portfolio: {
                     subTitle: "GLOBAL STANDARDS",
                     bgText: "GALLERY",
@@ -117,7 +110,8 @@ const resources = {
                     phone: "Phone",
                     email: "Email",
                     whatsapp: "WHATSAPP DIRECT",
-                    address: "Alexandria Desert Road, Giza, Egypt."
+                    address: "Alexandria Desert Road, Giza, Egypt.",
+                    address1: "Address"
                 }
             },
             footer: {
@@ -136,6 +130,7 @@ const resources = {
     },
     ar: {
         translation: {
+            loading: { "slogan": "جودة تليق بالتصدير" },
             nav: {
                 home: "الرئيسية",
                 about: "من نحن",
@@ -160,7 +155,7 @@ const resources = {
                 hero_desc: "تقدم شركة اجرو مارت للتصدير منتجات زراعية فاخرة مع التزام تام بأعلى معايير الجودة.",
                 btn_products: "اكتشف منتجاتنا",
                 btn_contact: "اتصل بنا",
-                about: { who_we_are: "طازج، فاخر، عالمي – هذه هي Agro Mart.", title_main: "وضع معايير جديدة لجودة التصدير الزراعي", description_brief: "في Agro Mart، نبني جسرًا من الثقة بين المزارع المصرية والأسواق العالمية. سنوات خبرتنا تجعلنا الخيار الأول لسلاسل الإمداد الكبرى في أوروبا والأمريكتين، مع الالتزام التام بالمعايير والشهادات الدولية.", who_we_are_desc: "من قلب مزارعنا إلى موائدكم العالمية", quote: "نحن لا نصدر منتجات فقط؛ بل نقدم تميز التربة المصرية إلى موائدكم العالمية.", ready_to_start: "تعرف على Agro Mart", btn_about: "اكتشف قصتنا" },
+                about: { who_we_are: "شريككم الاستراتيجي لتوريد أجود المحاصيل المصرية بمعايير أوروبية.", title_main: "وضع معايير جديدة لجودة التصدير الزراعي", description_brief: "في Agro Mart، نحن لا نصدر المحاصيل فحسب، بل نصدر التميز. بفضل شبكة لوجستية متطورة وفهم عميق لمتطلبات الأسواق نضمن وصول منتجاتنا من المزارع المصرية إليكم بأقصى درجات الطازجة. نحن نلتزم بأدق المعايير الدولية (Global GAP / ISO) لنكون دائماً خياركم الأول والموثوق.", who_we_are_desc: "من قلب مزارعنا إلى موائدكم العالمية", quote: "نحن لا نصدر منتجات فقط؛ بل نقدم تميز التربة المصرية إلى موائدكم العالمية.", ready_to_start: "تعرف على Agro Mart", btn_about: "اكتشف قصتنا" },
                 harvest: { badge: "محاصيل عالية الجودة", title1: "حصادنا", title2: "الموسمي", desc: "جودة مختارة بعناية من المزارع المصرية.", view_all: "عرض كل المنتجات" },
                 products: { onion: "منتجات IQF", orange: "منتجات فريش", strawberry: "منتجات في محلول ملحي", veg: "IQF", fruit: "FRESH", berry: "IN BRINE", desc: "تصدير بمعايير جودة عالمية" },
                 why: { title1: "لماذا يثق الشركاء في", title2: "AGRO MART", title3: "نتميز بالدقة، السرعة، والأمان في كل شحنة.", standards: "معايير عالمية", standards_d: "نتبع بدقة معايير Global G.A.P واللوائح الدولية.", direct: "من المزارع مباشرة", direct_d: "إلغاء الوسطاء لضمان أفضل سعر وأقصى نضارة.", logistics: "خدمات لوجستية", logistics_d: "شحن مبرد للحفاظ على جودة المنتجات العالية." },
@@ -171,10 +166,10 @@ const resources = {
                     seo_title: "من نحن | شركة اجرو مارت للتصدير الزراعي",
                     seo_description: "تعرف على رحلة شركة اجرو مارت في تصدير أفضل المحاصيل المصرية للعالم. نلتزم بأعلى معايير الجودة والاستدامة في الزراعة والتوريد.",
                     badge: "قصتنا",
-                    title1: "جذورنا في",
-                    title2: "الأرض المصرية",
+                    title1: "من مزارعنا",
+                    title2: "إلى العالم",
                     desc1: "شركة اجرو مارت للتصدير ليست مجرد شركة؛ بل هي جسر يربط بين التراث الزراعي الغني لمصر ومتطلبات السوق العالمية للجودة الفائقة.",
-                    desc2: "تأسست شركتنا على مبادئ النزاهة والتميز، ونحن متخصصون في توريد أجود أنواع الفاكهة والخضروات مباشرة من مزارعنا المحلية."
+                    desc2: "خبرتنا في السوق المحلي وقدرتنا على تلبية المتطلبات العالمية تجعلنا الشريك المثالي لنمو أعمالكم."
                 },
                 badge: {
                     subtitle: "جودة ممتازة",
@@ -238,9 +233,9 @@ const resources = {
                 seo_description: "تواصل مع شركة اجرو مارت لتصدير أجود المحاصيل الزراعية المصرية من بصل وبرتقال وفواكه إلى جميع أنحاء العالم.",
                 form: {
                     name_label: "الاسم الكامل",
-                    name_placeholder: "اسمك الكريم",
+                    name_placeholder: "اسمك الكامل",
                     email_label: "البريد الإلكتروني",
-                    email_placeholder: "email@company.com",
+                    email_placeholder: "البريد الإلكتروني",
                     msg_label: "رسالتك",
                     msg_placeholder: "كيف يمكننا مساعدتك؟",
                     send_btn: "إرسال الرسالة"
@@ -249,7 +244,8 @@ const resources = {
                     phone: "الهاتف",
                     email: "الإيميل",
                     whatsapp: "تواصل عبر واتساب",
-                    address: "كفر الدوار، البحيرة، مصر."
+                    address: "كفر الدوار، البحيرة، مصر.",
+                    address1: "العنوان"
                 }
             },
             footer: {
@@ -268,6 +264,7 @@ const resources = {
     },
     it: {
         translation: {
+            loading: { "slogan": "Esportare Qualità" },
             nav: {
                 home: "Home",
                 about: "Chi Siamo",
@@ -292,21 +289,20 @@ const resources = {
                 hero_desc: "Al-AGRO MART Export offre prodotti agricoli premium con un impegno totale verso i più alti standard di qualità.",
                 btn_products: "Scopri i nostri prodotti",
                 btn_contact: "Contattaci",
-                about: { who_we_are: "Fresco, Premium, Globale – Questo è Agro Mart.", title_main: "Stabilire nuovi standard per la qualità dell'esportazione agricola", description_brief: "In Agro Mart, costruiamo un ponte di fiducia tra le fattorie egiziane e i mercati globali. I nostri anni di esperienza ci rendono la prima scelta per le principali catene di approvvigionamento in Europa e nelle Americhe, con pieno impegno verso le certificazioni internazionali.", who_we_are_desc: "Dal cuore delle nostre fattorie alla vostra tavola globale", quote: "Non esportiamo solo prodotti; portiamo l'eccellenza del suolo egiziano sulla vostra tavola globale.", ready_to_start: "Incontra Agro Mart", btn_about: "Scopri la nostra storia" },
-                harvest: { badge: "Colture di Alta Qualità", title1: "Il Nostro", title2: "Raccolto Stagionale", desc: "Qualità selezionata con cura dalle fattorie egiziane.", view_all: "Visualizza Tutti i Prodotti" },
+                about: { who_we_are: "Il vostro partner strategico per la fornitura delle migliori colture egiziane con standard europei.", title_main: "Definiamo nuovi standard per la qualità dell'esportazione agricola", description_brief: "In Agro Mart, non esportiamo solo colture; esportiamo eccellenza. Grazie a una rete logistica avanzata e a una profonda comprensione delle esigenze del mercato, garantiamo che i nostri prodotti arrivino dalle fattorie egiziane a voi con la massima freschezza. Rispettiamo i più rigorosi standard internazionali (Global GAP / ISO) per essere sempre la vostra prima scelta affidabile.", who_we_are_desc: "Dal cuore delle nostre fattorie alle vostre tavole in tutto il mondo.", quote: "Non esportiamo solo prodotti; portiamo l'eccellenza della terra egiziana sulle vostre tavole globali.", ready_to_start: "Scopri Agro Mart", btn_about: "Scopri la nostra storia" }, harvest: { badge: "Colture di Alta Qualità", title1: "Il Nostro", title2: "Raccolto Stagionale", desc: "Qualità selezionata con cura dalle fattorie egiziane.", view_all: "Visualizza Tutti i Prodotti" },
                 products: { onion: "Prodotti IQF", orange: "Prodotti Freschi", strawberry: "Prodotti in Salamoia", veg: "IQF", fruit: "FRESH", berry: "IN BRINE", desc: "Esportazione secondo standard di qualità globali" },
                 why: { title1: "Perché i partner scelgono", title2: "AGRO MART", title3: "Ci distinguiamo per precisione, velocità e sicurezza in ogni spedizione.", standards: "Standard Internazionali", standards_d: "Seguiamo rigorosamente gli standard Global G.A.P. e le normative internazionali.", direct: "Direttamente dai Campi", direct_d: "Eliminiamo gli intermediari per garantire il miglior prezzo e la massima freschezza.", logistics: "Servizi Logistici", logistics_d: "Spedizioni refrigerate per preservare l'alta qualità dei prodotti." },
                 cta: { title: "Pronto per iniziare una partnership globale?", desc: "Richiedi oggi un preventivo personalizzato per le esigenze del tuo mercato.", btn: "Invia la tua richiesta ora" }
             },
             about: {
                 hero: {
-                    seo_title: "Chi Siamo | La Storia di AGRO MART Export",
-                    seo_description: "Scopri il percorso di AGRO MART Export nel portare i migliori prodotti agricoli egiziani nel mondo. Il nostro impegno per la qualità e la sostenibilità.",
+                    seo_title: "Chi Siamo | Agro Mart - Società di Esportazione Agricola",
+                    seo_description: "Scopri il viaggio di Agro Mart nell'esportazione delle migliori colture egiziane nel mondo. Impegnati nei più alti standard di qualità e sostenibilità.",
                     badge: "La Nostra Storia",
-                    title1: "Radici nella",
-                    title2: "Terra Egiziana",
-                    desc1: "AGRO MART Export non è solo un'azienda; è un ponte che collega il ricco patrimonio agricolo dell'Egitto con le esigenze di alta qualità del mercato globale.",
-                    desc2: "Fondata sui principi di integrità ed eccellenza, siamo specializzati nella fornitura dei migliori frutti e ortaggi direttamente dalle nostre aziende agricole locali."
+                    title1: "Dalle Nostre Fattorie",
+                    title2: "Al Mondo Intero",
+                    desc1: "Agro Mart Export non è solo un'azienda; è un ponte che collega il ricco patrimonio agricolo dell'Egitto con la domanda del mercato globale di qualità superiore.",
+                    desc2: "La nostra esperienza nel mercato locale e la capacità di soddisfare i requisiti internazionali ci rendono il partner ideale per la crescita del vostro business."
                 },
                 portfolio: {
                     subTitle: "STANDARD INTERNAZIONALI",
@@ -381,7 +377,8 @@ const resources = {
                     phone: "Telefono",
                     email: "Email",
                     whatsapp: "WHATSAPP DIRETTO",
-                    address: "Kafr El-Dawar, Beheira, Egitto."
+                    address: "Kafr El-Dawar, Beheira, Egitto.",
+                    address1: "Indirizzo"
                 }
             },
             footer: {

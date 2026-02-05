@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
@@ -11,6 +11,8 @@ import IT from '../../assets/IT.webp';
 
 export default function Navbar() {
     const { t, i18n } = useTranslation();
+    const navigate = useNavigate();
+    const location = useLocation();
     const [isScrolled, setIsScrolled] = useState(false);
     const [langMenuOpen, setLangMenuOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,12 +40,21 @@ export default function Navbar() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    useEffect(() => {
+        const lang = languages.find(l => l.code === i18n.language.toUpperCase());
+        if (lang) setCurrentLang(lang);
+    }, [i18n.language]);
+
     const navLinkStyles = ({ isActive }: { isActive: boolean }) =>
         `relative px-6 py-2 rounded-full font-bold text-sm transition-all duration-500 
         ${isActive ? 'text-white bg-agri-green shadow-lg' : 'text-gray-500 hover:text-agri-green hover:bg-gray-50'}`;
 
     const handleLanguageChange = (lang: any) => {
         const langCode = lang.code.toLowerCase();
+        
+        const currentPath = location.pathname.split('/').slice(2).join('/'); 
+        navigate(`/${langCode}/${currentPath}`);
+
         i18n.changeLanguage(langCode);
         localStorage.setItem('app_lang', langCode);
         setCurrentLang(lang);
@@ -53,6 +64,7 @@ export default function Navbar() {
     };
 
     const isRtl = i18n.language === 'ar';
+    const langPrefix = `/${i18n.language}`;
 
     return (
         <>
@@ -63,7 +75,7 @@ export default function Navbar() {
                     <div className="w-full px-6 lg:px-12 h-24 flex justify-between items-center">
 
                         <div className="flex-none lg:flex-1 flex justify-start items-center">
-                            <NavLink to="/" className="transition-transform duration-500 hover:scale-105 block">
+                            <NavLink to={`${langPrefix}/`} className="transition-transform duration-500 hover:scale-105 block">
                                 <img
                                     src={logoMain}
                                     alt="Zayat Export Logo"
@@ -74,10 +86,10 @@ export default function Navbar() {
 
                         <div className="hidden lg:flex flex-1 justify-center">
                             <div className="flex items-center gap-1 bg-gray-100/50 p-1.5 rounded-full border border-gray-100">
-                                <NavLink to="/" className={navLinkStyles}>{t('nav.home')}</NavLink>
-                                <NavLink to="/about" className={navLinkStyles}>{t('nav.about')}</NavLink>
-                                <NavLink to="/products" className={navLinkStyles}>{t('nav.products')}</NavLink>
-                                <NavLink to="/contact" className={navLinkStyles}>{t('nav.contact')}</NavLink>
+                                <NavLink to={`${langPrefix}/`} end className={navLinkStyles}>{t('nav.home')}</NavLink>
+                                <NavLink to={`${langPrefix}/about`} className={navLinkStyles}>{t('nav.about')}</NavLink>
+                                <NavLink to={`${langPrefix}/products`} className={navLinkStyles}>{t('nav.products')}</NavLink>
+                                <NavLink to={`${langPrefix}/contact`} className={navLinkStyles}>{t('nav.contact')}</NavLink>
                             </div>
                         </div>
 
@@ -127,7 +139,7 @@ export default function Navbar() {
 
                 <div className="flex flex-col h-full p-6">
                     <div className="flex justify-between items-center mb-10">
-                        <NavLink to="/" onClick={() => setMobileMenuOpen(false)} className="block">
+                        <NavLink to={`${langPrefix}/`} onClick={() => setMobileMenuOpen(false)} className="block">
                             <img
                                 src={logoMain}
                                 alt="Logo"
@@ -148,7 +160,7 @@ export default function Navbar() {
                         ].map((link) => (
                             <NavLink
                                 key={link.path}
-                                to={link.path}
+                                to={`${langPrefix}${link.path === '/' ? '' : link.path}`}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="group block w-full"
                             >

@@ -9,10 +9,10 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
-        { icon: <FaFacebookF />, link: 'https://facebook.com/zayat', color: 'hover:bg-[#1877F2]' },
-        { icon: <FaInstagram />, link: 'https://instagram.com/zayat', color: 'hover:bg-[#E4405F]' },
-        { icon: <FaLinkedinIn />, link: 'https://linkedin.com/company/zayat', color: 'hover:bg-[#0A66C2]' },
-        { icon: <FaWhatsapp />, link: 'https://wa.me/201000000000', color: 'hover:bg-[#25D366]' },
+        { icon: <FaFacebookF />, link: 'https://www.facebook.com/share/1E4wJbthif/', color: 'hover:bg-[#1877F2]' },
+        { icon: <FaInstagram />, link: 'https://www.instagram.com/agro.mart1999?igsh=OGZiMXF3ZWF0YTA2', color: 'hover:bg-[#E4405F]' },
+        { icon: <FaLinkedinIn />, link: 'https://www.linkedin.com/company/agro-mart-eg/', color: 'hover:bg-[#0A66C2]' },
+        { icon: <FaWhatsapp />, link: 'https://wa.me/201130346440', color: 'hover:bg-[#25D366]' },
     ];
 
     const navItems = [

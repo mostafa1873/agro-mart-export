@@ -51,10 +51,8 @@ export default function Navbar() {
 
     const handleLanguageChange = (lang: any) => {
         const langCode = lang.code.toLowerCase();
-        
-        const currentPath = location.pathname.split('/').slice(2).join('/'); 
+        const currentPath = location.pathname.split('/').slice(2).join('/');
         navigate(`/${langCode}/${currentPath}`);
-
         i18n.changeLanguage(langCode);
         localStorage.setItem('app_lang', langCode);
         setCurrentLang(lang);
@@ -66,6 +64,14 @@ export default function Navbar() {
     const isRtl = i18n.language === 'ar';
     const langPrefix = `/${i18n.language}`;
 
+    // الوظيفة الجديدة للصعود للأعلى عند الضغط على اللوجو
+    const handleLogoClick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     return (
         <>
             <div className={`fixed w-full z-[100] transition-all duration-500 ${isScrolled ? 'top-4' : 'top-0'}`}>
@@ -75,7 +81,12 @@ export default function Navbar() {
                     <div className="w-full px-6 lg:px-12 h-24 flex justify-between items-center">
 
                         <div className="flex-none lg:flex-1 flex justify-start items-center">
-                            <NavLink to={`${langPrefix}/`} className="transition-transform duration-500 hover:scale-105 block">
+                            {/* تمت إضافة onClick هنا */}
+                            <NavLink
+                                to={`${langPrefix}/`}
+                                onClick={handleLogoClick}
+                                className="transition-transform duration-500 hover:scale-105 block"
+                            >
                                 <img
                                     src={logoMain}
                                     alt="Zayat Export Logo"
@@ -86,7 +97,13 @@ export default function Navbar() {
 
                         <div className="hidden lg:flex flex-1 justify-center">
                             <div className="flex items-center gap-1 bg-gray-100/50 p-1.5 rounded-full border border-gray-100">
-                                <NavLink to={`${langPrefix}/`} end className={navLinkStyles}>{t('nav.home')}</NavLink>
+                                <NavLink
+                                    to={`${langPrefix}/`}
+                                    end
+                                    className={({ isActive }) => navLinkStyles({ isActive: isActive || location.pathname === langPrefix })}
+                                >
+                                    {t('nav.home')}
+                                </NavLink>
                                 <NavLink to={`${langPrefix}/about`} className={navLinkStyles}>{t('nav.about')}</NavLink>
                                 <NavLink to={`${langPrefix}/products`} className={navLinkStyles}>{t('nav.products')}</NavLink>
                                 <NavLink to={`${langPrefix}/contact`} className={navLinkStyles}>{t('nav.contact')}</NavLink>
@@ -139,7 +156,12 @@ export default function Navbar() {
 
                 <div className="flex flex-col h-full p-6">
                     <div className="flex justify-between items-center mb-10">
-                        <NavLink to={`${langPrefix}/`} onClick={() => setMobileMenuOpen(false)} className="block">
+                        {/* تمت إضافة onClick هنا أيضاً للموبايل */}
+                        <NavLink
+                            to={`${langPrefix}/`}
+                            onClick={() => { setMobileMenuOpen(false); handleLogoClick(); }}
+                            className="block"
+                        >
                             <img
                                 src={logoMain}
                                 alt="Logo"
@@ -211,15 +233,21 @@ export default function Navbar() {
 
                     <div className="mt-auto pt-6 border-t border-gray-50">
                         <div className="flex justify-center gap-5 mb-3">
-                            <FaFacebookF size={14} className="text-gray-300 hover:text-agri-green" />
-                            <FaInstagram size={14} className="text-gray-300 hover:text-agri-green" />
-                            <FaWhatsapp size={14} className="text-gray-300 hover:text-agri-green" />
+                            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                                <FaFacebookF size={14} className="text-gray-300 hover:text-agri-green transition-colors" />
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                                <FaInstagram size={14} className="text-gray-300 hover:text-agri-green transition-colors" />
+                            </a>
+                            <a href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noopener noreferrer">
+                                <FaWhatsapp size={14} className="text-gray-300 hover:text-agri-green transition-colors" />
+                            </a>
                         </div>
                         <p className="text-[8px] text-center font-bold text-gray-300 uppercase tracking-[0.2em]">{t('nav.footer_tag')}</p>
                     </div>
 
                 </div>
-            </div>
+            </div >
         </>
     );
 }

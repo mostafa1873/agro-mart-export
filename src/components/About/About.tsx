@@ -11,10 +11,10 @@ import howImg3 from '../../assets/how-3.webp';
 import productsData from '../../data/products.json';
 import { motion } from 'framer-motion';
 import AgriButton from '../Ui/AgriButton';
-import work1 from '../../assets/work-1.jfif';
-import work2 from '../../assets/work-2.jfif';
-import work3 from '../../assets/work-3.jfif';
-import work4 from '../../assets/work-4.jfif';
+import work1 from '../../assets/work-1.webp';
+import work2 from '../../assets/work-2.webp';
+import work3 from '../../assets/work-3.webp';
+import work4 from '../../assets/work-4.webp';
 import worklast from '../../assets/work-end.webp';
 
 
@@ -54,9 +54,9 @@ const myWorkImages = [
 
 export default function About() {
     const { t, i18n } = useTranslation();
-    const { pathname } = useLocation(); // أضفنا دي عشان نجيب المسار الحالي
+    const { pathname } = useLocation(); 
     const isRtl = i18n.language === 'ar';
-    const baseUrl = 'https://zayatexport.com'; // الأساس بتاعك
+    const baseUrl = 'https://zayatexport.com';
 
     return (
         <div className="pt-24 lg:pt-24 pb-12 lg:pb-20 overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>

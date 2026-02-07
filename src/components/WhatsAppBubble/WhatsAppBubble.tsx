@@ -6,12 +6,12 @@ export default function WhatsAppBubble() {
     const { t, i18n } = useTranslation();
     const isRtl = i18n.language === 'ar';
 
-    const phoneNumber = "201234567890";
-    const message = "Hello ZAYAT Export, I'm interested in your premium products.";
+    const phoneNumber = "201130346440";
+    const message = "Hello AGRO MART Export, I'm interested in your premium products.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
     return (
-        <div className={`fixed bottom-6 z-[999] flex flex-col transition-all duration-500 group 
+        <div className={`fixed bottom-6 z-[99] flex flex-col transition-all duration-500 group 
             ${isRtl ? 'left-3' : 'right-3'} items-end`}
             dir={isRtl ? 'rtl' : 'ltr'}
         >

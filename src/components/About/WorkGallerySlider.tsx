@@ -52,16 +52,30 @@ const WorkGallerySlider: React.FC<{ images: GalleryItem[] }> = ({ images }) => {
                     {images.map((item, i) => (
                         <div
                             key={i}
-                            className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out ${i === index ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'
-                                }`}
+                            className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out flex items-center justify-center bg-gray-900 ${
+                                i === index ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'
+                            }`}
                         >
+                            {/* Layer 1: Blurred Background Image (Fills the space) */}
+                            <div className="absolute inset-0 z-0 overflow-hidden">
+                                <img
+                                    src={item.url}
+                                    alt=""
+                                    className="w-full h-full object-cover blur-xl opacity-60 scale-110"
+                                />
+                            </div>
+
+                            {/* Layer 2: Main Image (Shows full content) */}
                             <img
                                 src={item.url}
                                 alt=""
-                                className={`w-full h-full object-cover transition-transform duration-[6000ms] ease-out ${i === index ? 'scale-105' : 'scale-110'
-                                    }`}
+                                className={`relative z-10 w-full h-full object-contain transition-transform duration-[6000ms] ease-out ${
+                                    i === index ? 'scale-100' : 'scale-105'
+                                }`}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-40" />
+
+                            {/* Overlay */}
+                            <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-40 pointer-events-none" />
                         </div>
                     ))}
 
@@ -108,7 +122,7 @@ const WorkGallerySlider: React.FC<{ images: GalleryItem[] }> = ({ images }) => {
                 </div>
             </div>
         </section>
-        
+
     );
 };
 

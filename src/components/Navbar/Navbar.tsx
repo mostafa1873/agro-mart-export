@@ -64,7 +64,6 @@ export default function Navbar() {
     const isRtl = i18n.language === 'ar';
     const langPrefix = `/${i18n.language}`;
 
-    // الوظيفة الجديدة للصعود للأعلى عند الضغط على اللوجو
     const handleLogoClick = () => {
         window.scrollTo({
             top: 0,
@@ -81,7 +80,6 @@ export default function Navbar() {
                     <div className="w-full px-6 lg:px-12 h-24 flex justify-between items-center">
 
                         <div className="flex-none lg:flex-1 flex justify-start items-center">
-                            {/* تمت إضافة onClick هنا */}
                             <NavLink
                                 to={`${langPrefix}/`}
                                 onClick={handleLogoClick}
@@ -156,7 +154,6 @@ export default function Navbar() {
 
                 <div className="flex flex-col h-full p-6">
                     <div className="flex justify-between items-center mb-10">
-                        {/* تمت إضافة onClick هنا أيضاً للموبايل */}
                         <NavLink
                             to={`${langPrefix}/`}
                             onClick={() => { setMobileMenuOpen(false); handleLogoClick(); }}
@@ -183,6 +180,7 @@ export default function Navbar() {
                             <NavLink
                                 key={link.path}
                                 to={`${langPrefix}${link.path === '/' ? '' : link.path}`}
+                                end={link.path === '/'}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="group block w-full"
                             >

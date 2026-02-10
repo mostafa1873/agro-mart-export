@@ -32,7 +32,7 @@ const WhyChooseUs = ({ t, isRtl }) => {
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveIndex((prev) => (prev === features.length - 1 ? 0 : prev + 1));
-        }, 2000);
+        }, 3000);
         return () => clearInterval(interval);
     }, [features.length]);
 

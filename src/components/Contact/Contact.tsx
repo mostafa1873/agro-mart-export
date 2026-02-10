@@ -103,7 +103,7 @@ export default function Contact() {
 
                                 {/* Address Card - Click for Google Maps */}
                                 <a
-                                    href="https://www.google.com/maps/search/?api=1&query=El+Sheikh+Zayed+Cairo+Egypt"
+                                    href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6830.302830320971!2d30.12588334304795!3d31.133309447573765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5df16bb7ad9df%3A0xf73827d19914333a!2sKafr%20El-Dawar%2C%20Monshaat%20Al%20Awqaf%2C%20Kafr%20El%20Dawwar%2C%20Beheira%20Governorate!5e0!3m2!1sen!2seg!4v1770738328924!5m2!1sen!2seg"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="group bg-gray-50 p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 hover:border-agri-green/20 hover:bg-white hover:shadow-xl transition-all duration-500 sm:col-span-2 lg:col-span-1 block"
@@ -114,7 +114,7 @@ export default function Contact() {
                                         </div>
                                         <div>
                                             <h3 className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2">{isRtl ? 'الموقع' : 'Location'}</h3>
-                                            <p className="text-base sm:text-lg font-bold text-gray-900 leading-snug">Cairo, Egypt - El Sheikh Zayed</p>
+                                            <p className="text-base sm:text-lg font-bold text-gray-900 leading-snug">Kafr El-Dawar, Beheira, Egypt.</p>
                                         </div>
                                     </div>
                                 </a>
@@ -188,7 +188,7 @@ export default function Contact() {
             <section className="px-4 sm:px-6 pb-16 lg:pb-32">
                 <div className="max-w-7xl mx-auto rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden h-[300px] sm:h-[400px] lg:h-[500px] shadow-inner grayscale hover:grayscale-0 transition-all duration-700 border-4 sm:border-8 border-gray-50">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.123456789!2d31.1234567!3d30.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDA3JzI0LjQiTiAzMcKwMDcnMjQuNCJF!5e0!3m2!1sen!2seg!4v1234567890"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6830.302830320971!2d30.12588334304795!3d31.133309447573765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5df16bb7ad9df%3A0xf73827d19914333a!2sKafr%20El-Dawar%2C%20Monshaat%20Al%20Awqaf%2C%20Kafr%20El%20Dawwar%2C%20Beheira%20Governorate!5e0!3m2!1sen!2seg!4v1770738328924!5m2!1sen!2seg"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}

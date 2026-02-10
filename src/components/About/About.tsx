@@ -54,9 +54,9 @@ const myWorkImages = [
 
 export default function About() {
     const { t, i18n } = useTranslation();
-    const { pathname } = useLocation(); 
+    const { pathname } = useLocation();
     const isRtl = i18n.language === 'ar';
-    const baseUrl = 'https://zayatexport.com';
+    const baseUrl = 'https://agromartexport.com';
 
     return (
         <div className="pt-24 lg:pt-24 pb-12 lg:pb-20 overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
@@ -91,6 +91,21 @@ export default function About() {
 
                 {/* 1. Hero */}
                 <div className="flex flex-col items-center mb-10 lg:mb-20 pt-5">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center transform opacity-[0.08] z-0 pointer-events-none">
+                            <h2 className="text-[15vw] font-black uppercase leading-none tracking-tighter bg-gradient-to-r from-black to-black bg-clip-text text-transparent">
+                                Agro Mart
+                            </h2>
+                            <h2 className="text-[12vw] font-black uppercase leading-none tracking-[0.3em] text-green-800 -mt-2 lg:-mt-6">
+                                Export
+                            </h2>
+                        </div>
+
+                        {/* باقي الكود كما هو تماماً */}
+                        <div className="absolute top-0 right-0 w-1/3 h-full opacity-[0.03] pointer-events-none hidden lg:block"
+                            style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
+                        </div>
+                    </div>
                     <div className="w-full max-w-5xl text-center mb-8 lg:mb-16 px-6">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-agri-green/10 text-agri-green rounded-full mb-4 lg:mb-6 transition-transform hover:scale-105">
                             <span className="text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap">
@@ -167,10 +182,32 @@ export default function About() {
                 </div>
 
                 {/* 2. About */}
-                <section dir={i18n.language === 'ar' ? 'rtl' : 'ltr'} className="w-full py-12 lg:py-24 bg-white overflow-hidden">
-                    <div className="max-w-6xl mx-auto px-6 lg:px-12">
+                <section
+                    dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}
+                    className="w-full py-12 lg:py-24 bg-white relative overflow-hidden"
+                >
+                    {/* --- التعديل هنا لضمان التوسط --- */}
+                    <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center pointer-events-none select-none z-0">
+                        <div className="w-full text-center"> {/* إضافة div داخلي لضمان توسيط النص */}
+                            <h2 className="text-[18vw] font-black uppercase leading-none tracking-tighter text-gray-100 opacity-70">
+                                Agro Mart
+                            </h2>
+                            <h2 className="text-[14vw] font-black uppercase leading-none tracking-[0.2em] text-green-900/5 -mt-2 lg:-mt-10">
+                                Export
+                            </h2>
+                        </div>
+                    </div>
+
+                    {/* 2. المحتوى الأساسي للسكشن */}
+                    <div className="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">
+                        {/* النقاط الخضراء الجانبية */}
+                        <div className="absolute top-0 right-0 w-1/3 h-full opacity-[0.03] pointer-events-none hidden lg:block"
+                            style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
+                        </div>
+
                         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
 
+                            {/* العمود الأيسر: الصورة والبادج */}
                             <div className="w-full lg:w-5/12 relative">
                                 <div className={`absolute -inset-4 bg-gray-50 rounded-[3rem] -z-10 rotate-3 hidden lg:block`} />
 
@@ -184,6 +221,7 @@ export default function About() {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
                                 </div>
 
+                                {/* البادج العائم */}
                                 <div className={`absolute -bottom-6 ${i18n.language === 'ar' ? '-left-4' : '-right-4'} bg-white p-4 rounded-2xl shadow-xl border border-gray-50 hidden sm:flex items-center gap-3 animate-pulse-slow`}>
                                     <div className="w-10 h-10 bg-agri-green rounded-full flex items-center justify-center text-white shadow-lg shadow-agri-green/30">
                                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -201,9 +239,11 @@ export default function About() {
                                 </div>
                             </div>
 
+                            {/* العمود الأيمن: النصوص والزرار */}
                             <div className="w-full lg:w-7/12 space-y-8">
                                 <div className={`space-y-6 text-center ${i18n.language === 'ar' ? 'lg:text-right' : 'lg:text-left'}`}>
 
+                                    {/* تيكر "منذ" */}
                                     <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-agri-green/5 border border-agri-green/10">
                                         <span className="relative flex h-2 w-2 mx-2">
                                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-agri-green opacity-75"></span>
@@ -221,7 +261,7 @@ export default function About() {
                                         </span>
                                     </h2>
 
-                                    <p className="text-shadow-black text-base lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light text-gray-600">
+                                    <p className="text-base lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light text-gray-600">
                                         {t('about.company.mission')}
                                     </p>
                                 </div>
@@ -233,20 +273,21 @@ export default function About() {
                                     />
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
+                    {/* الأنميشن الخاص بالبادج */}
                     <style dangerouslySetInnerHTML={{
                         __html: `
-                             @keyframes pulse-slow {
-                                 0%, 100% { opacity: 1; transform: translateY(0); }
-                                 50% { opacity: 0.9; transform: translateY(-5px); }
-                             }
-                             .animate-pulse-slow {
-                                 animation: pulse-slow 4s ease-in-out infinite;
-                             }
-                              `}} />
+            @keyframes pulse-slow {
+                0%, 100% { opacity: 1; transform: translateY(0); }
+                50% { opacity: 0.9; transform: translateY(-5px); }
+            }
+            .animate-pulse-slow {
+                animation: pulse-slow 4s ease-in-out infinite;
+            }
+        `}}
+                    />
                 </section>
 
                 {/* 3. Work Gallery */}

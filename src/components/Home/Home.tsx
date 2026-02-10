@@ -163,6 +163,18 @@ export default function Home() {
 
             {/* 2. About Section */}
             <section className="py-14 lg:py-32 bg-white relative overflow-hidden">
+
+                {/* التعديل هنا: أضفنا absolute inset-0 و z-0 عشان يرمي الكلام ورا */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center transform opacity-[0.08] z-0 pointer-events-none">
+                    <h2 className="text-[15vw] font-black uppercase leading-none tracking-tighter bg-gradient-to-r from-black to-black bg-clip-text text-transparent">
+                        Agro Mart
+                    </h2>
+                    <h2 className="text-[12vw] font-black uppercase leading-none tracking-[0.3em] text-green-800 -mt-2 lg:-mt-6">
+                        Export
+                    </h2>
+                </div>
+
+                {/* باقي الكود كما هو تماماً */}
                 <div className="absolute top-0 right-0 w-1/3 h-full opacity-[0.03] pointer-events-none hidden lg:block"
                     style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
                 </div>
@@ -253,6 +265,7 @@ export default function Home() {
 
             {/* 3. Process */}
             <section className="py-16 lg:py-32 bg-gray-50/50">
+
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
                     {/* Header Section */}

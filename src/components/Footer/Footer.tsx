@@ -31,7 +31,7 @@ export default function Footer() {
                 <div className="flex flex-col items-center mb-16 text-center">
                     <img
                         src={LogoMain}
-                        alt="Zayat Logo"
+                        alt="Agro Mart Export Logo"
                         className="h-16 lg:h-20 w-auto object-contain mb-6 hover:scale-105 transition-transform duration-300"
                     />
                     <p className={`text-gray-500 leading-relaxed font-medium max-w-lg text-sm lg:text-base ${isRtl ? 'font-arabic' : ''}`}>
@@ -85,7 +85,7 @@ export default function Footer() {
                                     <FaEnvelope size={12} />
                                 </div>
                                 <a href="mailto:info@zayatexport.com" className="text-sm font-bold hover:text-agri-green transition-colors">
-                                    info@zayatexport.com
+                                    info@agromart.com
                                 </a>
                             </div>
 
@@ -158,6 +158,6 @@ export default function Footer() {
             </div>
 
         </footer>
-        
+
     );
 }

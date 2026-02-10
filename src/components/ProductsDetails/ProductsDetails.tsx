@@ -33,9 +33,15 @@ export default function ProductsDetails() {
     const allProducts = productsData.products;
 
     // --- التعديل الجوهري والمضمون: البحث مع توحيد حالة الأحرف وفك تشفير الرابط ---
+// --- التعديل الجوهري والمضمون: البحث مع توحيد حالة الأحرف وفك تشفير الرابط ---
     const product = allProducts.find(p => {
+        // 1. تحويل اسم المنتج من الداتا إلى slug (مثال: Green Beans -> green-beans)
         const productSlug = createSlug(p.name_en);
-        const urlSlug = decodeURIComponent(id || '').toLowerCase();
+        
+        // 2. تحويل الرابط القادم أيضاً إلى slug لضمان التوافق حتى لو كان فيه مسافات
+        // هذا السطر هو التعديل الهام: نستخدم createSlug على الـ id أيضاً
+        const urlSlug = createSlug(decodeURIComponent(id || ''));
+        
         return productSlug === urlSlug;
     });
 
